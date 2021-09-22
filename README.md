@@ -6,12 +6,8 @@
 
 ## General Info
 This browser based web application to ...
-<<<<<<< HEAD
 * Hi my name is Ryan.  This is my edit to this file.
-	
-=======
-	Hi my name is Jason. I'm excited about this project beacuse...
->>>>>>> f47967c (Added one line intro to README file for Jason)
+* Hi my name is Jason. I'm excited about this project beacuse...
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
