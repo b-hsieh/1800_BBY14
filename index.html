@@ -1,151 +1,161 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/my_style.css"/>
-    
-    <title>COMP 1800 WebApp</title>
-  </head>
-  <body>
-    <!--Navbar-->
-    <header id="topnav">
-      <div  class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">  
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-light">
-                  <img src="images/home.png" alt="Home" width="32" height="32"><img>
-                  Home
-                </a>
-            </li>
-            <li><a href="#" class="nav-link px-2 link-light">
-                  <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
-                  Favourites
-                </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-2 link-light">
-                <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
-                Friends
-              </a>
-            </li>
-          </ul>
-  
-          <!--Search Bar-->
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
-          </form>
-  
-          <div class="dropdown text-end">
-            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </header>
-  
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="px-4 pt-5 my-5 text-center border-bottom">
-      <div class="overflow-hidden" style="max-height: 30vh;">
-        <div class="container px-5">
-          <img src="./images/GroupRestaurant.jpg" class="img-fluid border rounded-3 shadow-lg mb-1" alt="SplashImage" width="auto" height="auto" loading="lazy">
-        </div>
-      </div>
-      <br/><br/>
-      <h1 class="display-4 fw-bold">Where are We Dining Tonight?</h1>
-      <div class="col-lg-6 mx-auto">
-        <br/><br/>
-      </div>
-    </div>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/my_style.css" />
 
-    <div>
-      <h4>Recent Search Results</h4>
-      <br/>
-    </div>
+  <title>COMP 1800 WebApp</title>
+</head>
 
+<body>
+  <!--Navbar-->
+  <header id="topnav">
     <div class="container">
-      <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-          <div class="row g-0">
-              <div class="col-md-4">
-                  <img src="./images/Gourmet.jpg" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                  <div class="card-body">
-                      <h5 class="card-title">Harbour Seafood Restaurant</h5>
-                      <p class="card-text">
-                        Imagine having the finest dining experience with good friends overlooking
-                        the Georgia Strait.  Offering a picturesque setting and a world-renowned chef, Harbour Seafood
-                        is a gem of Vancouver.  The seafood menu selections come from the freshest daily catch and their
-                        wine list is one of the most extensive on the west coast.
-                      </p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-              </div>
-          </div>
-      </div>
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="main.html" class="nav-link px-2 link-light">
+              <img src="images/home.png" alt="Home" width="32" height="32"><img>
+              Home
+            </a>
+          </li>
+          <li><a href="#" class="nav-link px-2 link-light">
+              <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
+              Favourites
+            </a>
+          </li>
+          <li>
+            <a href="friends.html" class="nav-link px-2 link-light">
+              <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
+              Friends
+            </a>
+          </li>
+        </ul>
 
-      <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-          <div class="row g-0">
-              <div class="col-md-4">
-                  <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                  <div class="card-body">
-                      <h5 class="card-title">Mendies</h5>
-                      <p class="card-text">
-                        This restaurant has it all.  From grilled steaks to award-winning pastas,
-                        there is something for everyone.  Mendies is especially known for its wide variety of soups.
-                        Every diner is guaranteed to be satisfied!
-                      </p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-              </div>
-          </div>
-      </div>
+        <!--Search Bar-->
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
+        </form>
 
-      <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-          <div class="row g-0">
-              <div class="col-md-4">
-                  <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                  <div class="card-body">
-                      <h5 class="card-title">Sushi King</h5>
-                      <p class="card-text">
-                        Sushi King has the most delectable selection of sushi in the city.  Their Chef's creations are
-                        also well known to offer new and exciting creations to diners.  The delivers a fun and creative
-                        experience for all to enjoy.
-                      </p>
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-              </div>
-          </div>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+          </ul>
+        </div>
       </div>
+    </div>
+  </header>
+
+
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <img src="./images/GroupRestaurant.jpg" class="img-fluid border rounded-3 shadow-lg mb-1" alt="SplashImage"
+          width="auto" height="auto" loading="lazy">
+      </div>
+    </div>
+    <br /><br />
+    <h1 class="display-4 fw-bold">Where are We Dining Tonight?</h1>
+    <div class="col-lg-6 mx-auto">
+      <br /><br />
+    </div>
+  </div>
+
+  <div>
+    <h4>Recent Search Results</h4>
+    <br />
+  </div>
+
+  <div class="container">
+    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="./images/Gourmet.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Harbour Seafood Restaurant</h5>
+            <p class="card-text">
+              Imagine having the finest dining experience with good friends overlooking
+              the Georgia Strait. Offering a picturesque setting and a world-renowned chef, Harbour Seafood
+              is a gem of Vancouver. The seafood menu selections come from the freshest daily catch and their
+              wine list is one of the most extensive on the west coast.
+            </p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Mendies</h5>
+            <p class="card-text">
+              This restaurant has it all. From grilled steaks to award-winning pastas,
+              there is something for everyone. Mendies is especially known for its wide variety of soups.
+              Every diner is guaranteed to be satisfied!
+            </p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Sushi King</h5>
+            <p class="card-text">
+              Sushi King has the most delectable selection of sushi in the city. Their Chef's creations are
+              also well known to offer new and exciting creations to diners. The delivers a fun and creative
+              experience for all to enjoy.
+            </p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
-   
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-  </body>
+</body>
+
 </html>

@@ -18,59 +18,49 @@
 </head>
 
 <body>
-    <nav id="bar" class="navbar navbar-expand-lg navbar-light bg-danger ">
-        <div class="container-fluid" style="padding: 0 15vw;">
-            <a class="navbar-brand" href="#"></a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="main.html">
-                            <img src="./images/home.png" alt="Home" width="32" height="32">
+    <header id="topnav">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="main.html" class="nav-link px-2 link-light">
+                            <img src="images/home.png" alt="Home" width="32" height="32"><img>
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">
-                            <img src="./images/favourites.png" alt="Favourites" width="32" height="32">
+                    <li><a href="#" class="nav-link px-2 link-light">
+                            <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
                             Favourites
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img src="./images/friends.png" alt="Friends" width="32" height="32">
+                    <li>
+                        <a href="friends.html" class="nav-link px-2 link-light">
+                            <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
                             Friends
                         </a>
                     </li>
                 </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
+                </form>
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
-            </form>
-
-            <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-            </div>
-
         </div>
-    </nav>
+    </header>
 
     <!-- welcome and main part of the page -->
     <div class="container">
@@ -78,7 +68,8 @@
             <img src="images/burger.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Hamburger restaurant 1</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
                 <button type="button" class="btn btn-primary">Menu</button>
                 <button type="button" class="btn btn-primary">Reviews</button>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
