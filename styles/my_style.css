@@ -13,3 +13,8 @@
 .create {
   background-color: firebrick;
 }
+
+#gameCreation {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
