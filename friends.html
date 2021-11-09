@@ -176,7 +176,7 @@
         
 
       function recordFriend() {
-        var friendRef = db.collection("friends");
+        var friendRef = app.collection("friends");
 
         friendRef.add({
           name: "Jack Bauer",
@@ -184,10 +184,10 @@
         });
         
       }
-      writeFriend();
+      recordFriend();
 
       function displayFriend() {
-          db.collection("friends").get()
+          app.collection("friends").get()
             .then(allFriends => {
               allFriends.forEach(doc => {
                 var friendName = doc.data().name;
