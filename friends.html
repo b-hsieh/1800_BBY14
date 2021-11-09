@@ -12,6 +12,21 @@
   <link rel="stylesheet" href="./styles/my_style.css" />
 
   <title>COMP 1800 WebApp</title>
+
+      <!-- Firebase 8 CDNs-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+          </script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+      <script src="./scripts/firebaseAPI.js"></script>
+
+  
+
 </head>
 
 <body>
@@ -43,6 +58,7 @@
           <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
         </form>
 
+        <!--Profile Settings Dropdown-->
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,28 +77,26 @@
     </div>
   </header>
 
-
+  <!--Content-->
   <div class="px-4 pt-5 my-5 text-center border-bottom">
     <div class="overflow-hidden" style="max-height: 30vh;">
-      <div class="container px-5">
-        <img src="./images/friendseating.jpg" class="img-fluid border rounded-3 shadow-lg mb-1" alt="SplashImage"
-          width="auto" height="auto" loading="lazy">
-      </div>
+
     </div>
-    <br /><br />
-    <h1 class="display-4 fw-bold">Friends</h1>
+    <h1 class="display-4 fw-bold">Friends</h1><br/>
+    <a class="btn btn-danger" href="#" role="button">Create Group</a>
+    <a class="btn btn-danger" href="#" role="button">Add Friend</a>
     <div class="col-lg-6 mx-auto">
       <br /><br />
     </div>
   </div>
 
 
-
+  <!--Friends Listings-->
   <div class="container">
     <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="./images/blankprofile.png" class="img-fluid rounded-start" alt="...">
+          <img id="friend1" src="./images/Guy1.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -90,7 +104,7 @@
             <p class="card-text">
 
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted"></small></p>
           </div>
         </div>
       </div>
@@ -99,7 +113,7 @@
     <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="./images/blankprofile.png" class="img-fluid rounded-start" alt="...">
+          <img id="friend2" src="./images/Girl1.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -107,7 +121,24 @@
             <p class="card-text">
 
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted"></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div  class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img id="friend3" src="./images/Guy2.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Friend 3</h5>
+            <p class="card-text">
+
+            </p>
+            <p class="card-text"><small class="text-muted"></small></p>
           </div>
         </div>
       </div>
@@ -116,15 +147,15 @@
     <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="./images/blankprofile.png" class="img-fluid rounded-start" alt="...">
+          <img id="friend4" src="./images/Girl2.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Friend 3</h5>
+            <h5 class="card-title">Friend 4</h5>
             <p class="card-text">
 
             </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <p class="card-text"><small class="text-muted"></small></p>
           </div>
         </div>
       </div>
@@ -140,6 +171,36 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+
+    <script>
+        
+
+      function recordFriend() {
+        var friendRef = db.collection("friends");
+
+        friendRef.add({
+          name: "Jack Bauer",
+          
+        });
+        
+      }
+      writeFriend();
+
+      function displayFriend() {
+          db.collection("friends").get()
+            .then(allFriends => {
+              allFriends.forEach(doc => {
+                var friendName = doc.data().name;
+                console.log(friendName);
+                document.getElementById(friendName).innerText = friendName;
+              })
+            })
+      }
+      displayFriend();
+
+
+
+    </script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
