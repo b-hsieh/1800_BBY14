@@ -182,8 +182,9 @@
           name: "Jack Bauer",
           
         });
-        writeFriend();
+        
       }
+      writeFriend();
 
       function displayFriend() {
           db.collection("friends").get()
@@ -195,6 +196,7 @@
               })
             })
       }
+      displayFriend();
 
 
 
