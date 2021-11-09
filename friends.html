@@ -187,7 +187,7 @@
       recordFriend();*/
 
       function displayFriend() {
-          app.collection("friends").get()
+          db.collection("friends").get()
             .then(allFriends => {
               allFriends.forEach(doc => {
                 var friendName = doc.data().name;

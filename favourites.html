@@ -206,7 +206,7 @@
   <script>
 
     function displayFavourite() {
-      app.collection("favourites").get()
+      db.collection("favourites").get()
             .then(allRestaurants => {
               allRestaurants.forEach(doc => {
                 var restName = doc.data().name;
