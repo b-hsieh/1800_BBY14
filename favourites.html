@@ -11,6 +11,16 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/my_style.css" />
 
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+  <!-- Link to the api keys for your firebase project -->
+  <script src="./scripts/firebaseAPI_TEAM99.js"></script>
+
   <title>COMP 1800 WebApp</title>
 </head>
 
@@ -80,7 +90,7 @@
 
 
   <div class="container">
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+    <div id="favCard1" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="./images/Gourmet.jpg" class="img-fluid rounded-start" alt="...">
@@ -94,13 +104,13 @@
                       is a gem of Vancouver.  The seafood menu selections come from the freshest daily catch and their
                       wine list is one of the most extensive on the west coast.
                     </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+    <div id="favCard2" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
@@ -113,13 +123,13 @@
                       there is something for everyone.  Mendies is especially known for its wide variety of soups.
                       Every diner is guaranteed to be satisfied!
                     </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+    <div id="favCard3" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
@@ -132,32 +142,32 @@
                       also well known to offer new and exciting creations to diners.  The delivers a fun and creative
                       experience for all to enjoy.
                     </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
                 </div>
             </div>
         </div>
     </div>
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+    <div id="favCard4" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
       <div class="row g-0">
           <div class="col-md-4">
-              <img src="./images/Gourmet.jpg" class="img-fluid rounded-start" alt="...">
+              <img src="./images/burger3.jpg" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8">
               <div class="card-body">
-                  <h5 class="card-title">Harbour Seafood Restaurant</h5>
+                  <h5 class="card-title">Mr. Burger</h5>
                   <p class="card-text">
                     Imagine having the finest dining experience with good friends overlooking
                     the Georgia Strait.  Offering a picturesque setting and a world-renowned chef, Harbour Seafood
                     is a gem of Vancouver.  The seafood menu selections come from the freshest daily catch and their
                     wine list is one of the most extensive on the west coast.
                   </p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
               </div>
           </div>
       </div>
   </div>
 
-  <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+  <div id="favCard5" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
       <div class="row g-0">
           <div class="col-md-4">
               <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
@@ -170,13 +180,13 @@
                     there is something for everyone.  Mendies is especially known for its wide variety of soups.
                     Every diner is guaranteed to be satisfied!
                   </p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
               </div>
           </div>
       </div>
   </div>
 
-  <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+  <div id="favCard6" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
       <div class="row g-0">
           <div class="col-md-4">
               <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
@@ -189,7 +199,7 @@
                     also well known to offer new and exciting creations to diners.  The delivers a fun and creative
                     experience for all to enjoy.
                   </p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
               </div>
           </div>
       </div>
