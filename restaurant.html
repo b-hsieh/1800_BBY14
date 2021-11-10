@@ -67,11 +67,13 @@
         <div class="card_mb-3">
             <img src="images/burger.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Hamburger restaurant 1</h5>
+                <h5 class="card-title" id="RestaurantName">Restaurnant name</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
                     content. This content is a little bit longer.</p>
                 <button type="button" class="btn btn-danger">Menu</button>
                 <button type="button" class="btn btn-danger">Reviews</button>
+                <button type="button" class="btn btn-danger">Favourite</button>
+                <button type="button" class="btn btn-danger">Add(Game)</button>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
@@ -89,12 +91,40 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
     <!-- Link to the api keys for your firebase project -->
-    <script src="scripts/firebase_api_elmo.js"></script>
+    <script src="scripts/firebaseAPI.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script>
 
+
+        function displayRestaurant() {
+            db.collection("restaurants").get()
+                .then(allRestaurants => {
+                    allRestaurants.forEach(doc => {
+                        var restaurantName = doc.data().name;
+                        var restaurantID = doc.data().code;
+                        document.getElementById(restaurantID).innerText = restaurantName;
+                    });
+                })
+        }
+        displayRestaurant();
+        // let restaurantID = localStorage.getItem('restaurantID');
+        db.collection("restaurants").where("code", "==", restaurantID)
+            .get()
+            .then(queryRestaurant => {
+                size = queryRestaurant.size;
+                Restaurants = queryRestaurant.docs;
+                if (size = 1) {
+                    var thisRestaurant = restaurants[0].data();
+                    name = thisRestaurant.name;
+                    document.getElementById("RestaurantName").innerHTML = name;
+                } else {
+                    console.log("Query has more than one data");
+                }
+            })
+    </script>
 </body>
 
 </html>

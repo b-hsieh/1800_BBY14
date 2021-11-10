@@ -112,7 +112,8 @@
       <div class="card">
         <img src="images/burger.jpg" class="card-img-top" alt="..." width="450" height="450">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title" id="BR001"> <a href="restaurant.html" onclick="setRestaurantData('BR001')"> Card
+              title</a></h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.</p>
         </div>
@@ -128,10 +129,28 @@
     crossorigin="anonymous"></script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="scripts/firebaseAPI.js"></script>
   <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+  <script>
+    function displayRestaurant() {
+      db.collection("restaurants").get()
+        .then(allRestaurants => {
+          allRestaurants.forEach(doc => {
+            var restaurantName = doc.data().name;
+            var restaurantID = doc.data().code;
+            document.getElementById(restaurantID).innerText = restaurantName;
+          });
+        })
+    }
+    displayRestaurant();
+
+    function setReestaurantData(id) {
+      local.setItem('restaurantID', id);
+    }
+  </script>
 </body>
 
 </html>
