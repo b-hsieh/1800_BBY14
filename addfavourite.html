@@ -106,26 +106,29 @@
     crossorigin="anonymous"></script>
 
   <script>
+    function addFavourite() {
+      let Restaurant = document.getElementById("restaurants").value;
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         var currentUser = db.collection("users").doc(user.uid);
         var userID = user.uid;
         currentUser.get()
-                        .then(userDoc => {
-														//get user Email
-                            var userEmail = userDoc.data().email;
-														// Start a new collection and add all data in it.
-                            db.collection("Favorites").add({
-                                Restaurant: restName
-                         
-                            });
-                        })
+          .then(userDoc => {
+            //get user Email
+            var userEmail = userDoc.data().email;
+            // Start a new collection and add all data in it.
+            db.collection("Favorites").add({
+                Restaurant: restName
 
-      } else {
+            });
+          })
+
+          } else {
           // No user is signed in.
           console.log("no user signed in");
-      }
+          }
     });
+  }
   </script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
