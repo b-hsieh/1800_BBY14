@@ -97,7 +97,20 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-
+        // let restaurantID = localStorage.getItem('restaurantID');
+        // db.collection("restaurants").where("code", "==", restaurantID)
+        //     .get()
+        //     .then(queryRestaurant => {
+        //         size = queryRestaurant.size;
+        //         Restaurants = queryRestaurant.docs;
+        //         if (size = 1) {
+        //             var thisRestaurant = restaurants[0].data();
+        //             name = thisRestaurant.name;
+        //             document.getElementById("RestaurantName").innerHTML = name;
+        //         } else {
+        //             console.log("Query has more than one data");
+        //         }
+        //     })
 
         function displayRestaurant() {
             db.collection("restaurants").get()
@@ -110,20 +123,6 @@
                 })
         }
         displayRestaurant();
-        // let restaurantID = localStorage.getItem('restaurantID');
-        db.collection("restaurants").where("code", "==", restaurantID)
-            .get()
-            .then(queryRestaurant => {
-                size = queryRestaurant.size;
-                Restaurants = queryRestaurant.docs;
-                if (size = 1) {
-                    var thisRestaurant = restaurants[0].data();
-                    name = thisRestaurant.name;
-                    document.getElementById("RestaurantName").innerHTML = name;
-                } else {
-                    console.log("Query has more than one data");
-                }
-            })
     </script>
 </body>
 
