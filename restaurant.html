@@ -78,14 +78,6 @@
             <img src="./images/burger.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title" id="RestaurantName">Restaurnant name</h5>
-<<<<<<< HEAD
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
-                <button type="button" class="btn btn-danger">Menu</button>
-                <button type="button" class="btn btn-danger">Reviews</button>
-                <button type="button" class="btn btn-danger">Favourite</button>
-                <button type="button" class="btn btn-danger">Add(Game)</button>
-=======
                 <p class="card-text" id="description">This is a wider card with supporting text below as a natural
                     lead-in to additional
                     content. This content is a little bit longer.</p>
@@ -93,7 +85,7 @@
                 <button type="button" class="btn btn-danger">Reviews</button>
                 <button type="button" class="btn btn-danger" onclick="writeFave()">Favourite +</button>
                 <button type="button" class="btn btn-danger">Game +</button>
->>>>>>> 2a4cca029cff5c5fc701bb064382d7c228d70027
+
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
@@ -117,34 +109,6 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-<<<<<<< HEAD
-        // let restaurantID = localStorage.getItem('restaurantID');
-        // db.collection("restaurants").where("code", "==", restaurantID)
-        //     .get()
-        //     .then(queryRestaurant => {
-        //         size = queryRestaurant.size;
-        //         Restaurants = queryRestaurant.docs;
-        //         if (size = 1) {
-        //             var thisRestaurant = restaurants[0].data();
-        //             name = thisRestaurant.name;
-        //             document.getElementById("RestaurantName").innerHTML = name;
-        //         } else {
-        //             console.log("Query has more than one data");
-        //         }
-        //     })
-
-        function displayRestaurant() {
-            db.collection("restaurants").get()
-                .then(allRestaurants => {
-                    allRestaurants.forEach(doc => {
-                        var restaurantName = doc.data().name;
-                        var restaurantID = doc.data().code;
-                        document.getElementById(restaurantID).innerText = restaurantName;
-                    });
-                })
-        }
-        displayRestaurant();
-=======
 
         let restaurantID = localStorage.getItem('resID');
 
@@ -188,7 +152,6 @@
                 }
             })
         }
->>>>>>> 2a4cca029cff5c5fc701bb064382d7c228d70027
     </script>
 </body>
 
