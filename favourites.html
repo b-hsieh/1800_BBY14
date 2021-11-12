@@ -238,21 +238,6 @@
 
   <script>
 
-<<<<<<< HEAD
-
-
-    function displayFavourite() {
-      db.collection("favourites").get()
-        .then(allRestaurants => {
-          allRestaurants.forEach(doc => {
-            var restName = doc.data().name;
-            console.log(restName);
-            document.getElementById(restName).innerText = name;
-          })
-        })
-    }
-    displayFavourite();
-=======
     /* function displayFavourite() {
        db.collection("favourites").get()
              .then(allRestaurants => {
@@ -264,7 +249,6 @@
              })
        }
        displayFavourite();*/
->>>>>>> 2a4cca029cff5c5fc701bb064382d7c228d70027
 
       function writeRest() {
                     //define a variable for the collection you want to create in Firestore to populate data
