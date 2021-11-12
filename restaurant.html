@@ -14,14 +14,14 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
     <!-- Firebase 8 CDNs-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> -->
 
     <!-- Link to the api keys for your firebase project -->
-    <script src="./scripts/firebaseAPI.js"></script>
+    <!-- <script src="./scripts/firebaseAPI.js"></script> -->
 
     <!-- Optional styles and scripts of your own -->
     <link type="text/css" rel="stylesheet" href="styles/restaurant.css">
@@ -75,13 +75,16 @@
     <!-- welcome and main part of the page -->
     <div class="container">
         <div class="card_mb-3">
-            <img src="images/burger.jpg" class="card-img-top" alt="...">
+            <img src="./images/burger.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Hamburger restaurant 1</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                <h5 class="card-title" id="RestaurantName">Restaurnant name</h5>
+                <p class="card-text" id="description">This is a wider card with supporting text below as a natural
+                    lead-in to additional
                     content. This content is a little bit longer.</p>
                 <button type="button" class="btn btn-danger">Menu</button>
                 <button type="button" class="btn btn-danger">Reviews</button>
+                <button type="button" class="btn btn-danger" onclick="writeFave()">Favourite +</button>
+                <button type="button" class="btn btn-danger">Game +</button>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
@@ -99,12 +102,56 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
     <!-- Link to the api keys for your firebase project -->
-    <script src="scripts/firebase_api_elmo.js"></script>
+    <script src="scripts/firebaseAPI.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script>
 
+        let restaurantID = localStorage.getItem('resID');
+
+        db.collection("restaurants").where("code", "==", restaurantID)
+            .get()
+            .then(queryRestaurant => {
+                size = queryRestaurant.size;
+                Restaurants = queryRestaurant.docs;
+                // console.log(Restaurants[0].data());
+                if (size = 1) {
+                    var thisRestaurant = Restaurants[0].data();
+                    name = thisRestaurant.name;
+                    // console.log(name);
+                    description = thisRestaurant.description;
+                    // console.log(description);
+                    code = thisRestaurant.code;
+                    // console.log(code);
+                    document.getElementById("RestaurantName").innerHTML = name;
+                    document.getElementById("description").innerHTML = description;
+                } else {
+                    console.log("Query has more than one data");
+                }
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            })
+        console.log(db.collection("restaurants").where("code", "==", restaurantID).get());
+        function writeFave() {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    var currentUser = db.collection("users").doc(user.uid)
+                    var userID = user.uid;
+                    currentUser.get()
+                        .then(userDoc => {
+                            db.collection("users").doc(userID).collection("favourites").add({
+                                name: name,
+                                code: code,
+                                description: description
+                            });
+                        })
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
