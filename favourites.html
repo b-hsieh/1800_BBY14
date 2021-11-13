@@ -97,50 +97,50 @@
     
     <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
 
-    <div id="favCard1" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="./images/Gourmet.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 id="restTitle" class="card-title"></h5>
-            <p id="rDesc" class="card-text">
+      <div id="favCard1" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img id="restPic" src="..." class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 id="restTitle" class="card-title"></h5>
+              <p id="rDesc" class="card-text">
+                
+              </p>
               
-            </p>
-            
+            </div>
           </div>
-        </div>
 
-      </div>
-    </div>
-  
-
-
-    <div id="favCard2" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-
-
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text">
-            
-            </p>
-            
-          </div>
         </div>
       </div>
     </div>
-  
 
 
-    <!--div id="favCard3" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+    <!--div id="favCard2" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+
+
+      <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">
+              
+              </p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="favCard3" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
 
 
     <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
@@ -312,9 +312,11 @@
 			           var restName = doc.data().name; //gets the name field
 			           var restID = doc.data().code; //gets the unique ID field
                  var restDesc = doc.data().description;
+                 var picture = doc.data().image;
 			           console.log(restID);
 			           document.getElementById("restTitle").innerText = restName;
                  document.getElementById("rDesc").innerText = restDesc;
+                 document.getElementById("restPic").src = picture;
            })
            })
                         }
@@ -326,6 +328,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+
 </body>
 
 </html>
