@@ -68,45 +68,22 @@
       </div>
     </div>
   </header>
-
-  <form>
-    <div class="mb-3">
-      <label for="lobbyCode" class="form-label">Lobby Code</label>
-      <input type="text" class="form-control" id="lobbyCode">
-      <div id="emailHelp" class="form-text">Enter a code for your lobby</div>
+  <h1>Lobby Code</h1>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Host</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
     </div>
-
-    <button type="button" class="btn btn-primary" onclick="createLobby()">Submit</button>
-  </form>
-
-  <script>
-    function createLobby() {
-      let lobbyCode = document.getElementById("lobbyCode").value;
-
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          var currentUser = db.collection("users").doc(user.uid)
-          var userID = user.uid;
-          //get the document for current user.
-          currentUser.get()
-          .then(userDoc => {
-            db.collection("games").doc(lobbyCode).set( {
-              code: lobbyCode,
-              status: "creating",
-              window: 15,
-              users: { host: {ID: userID, 
-                              votes: 1, 
-                              restaurants: 2}},
-              winner: "undecided"
-            });
-          })
-        } else {
-          // No user is signed in.
-          console.log("no user signed in");
-        }
-      });
-    }
-  </script>
+  </div>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
