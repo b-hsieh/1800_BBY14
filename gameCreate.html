@@ -76,7 +76,7 @@
       <div id="emailHelp" class="form-text">Enter a code for your lobby</div>
     </div>
 
-    <button type="submit" class="btn btn-primary" onclick="createLobby()">Submit</button>
+    <button type="button" class="btn btn-primary" onclick="createLobby()">Submit</button>
   </form>
 
   <script>
@@ -94,7 +94,7 @@
               code: lobbyCode,
               status: "creating",
               window: 15,
-              users: { userID: {votes: 1, restaurants: 2}},
+              users: { userID: {ID: userID, votes: 1, restaurants: 2}},
               winner: "undecided"
             });
           })
