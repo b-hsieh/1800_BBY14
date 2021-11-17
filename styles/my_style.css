@@ -32,3 +32,7 @@
 .card-body {
   grid-column: 2 / 3;
 }
+
+#drpDwn {
+  text-align: center;
+}
