@@ -11,6 +11,16 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/my_style.css" />
 
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+  <!-- Link to the api keys for your firebase project -->
+  <script src="./scripts/firebaseAPI.js"></script>
+
   <title>COMP 1800 WebApp</title>
 </head>
 
@@ -59,7 +69,42 @@
     </div>
   </header>
 
+  <form>
+    <div class="mb-3">
+      <label for="lobbyCode" class="form-label">Lobby Code</label>
+      <input type="text" class="form-control" id="lobbyCode">
+      <div id="emailHelp" class="form-text">Enter a code for your lobby</div>
+    </div>
 
+    <button type="submit" class="btn btn-primary" onclick="createLobby()">Submit</button>
+  </form>
+
+  <script>
+    function createLobby() {
+      let lobbyCode = document.getElementById("lobbyCode").value;
+
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid)
+          var userID = user.uid;
+          //get the document for current user.
+          currentUser.get()
+          .then(userDoc => {
+            db.collection("games").doc(lobbyCode).set( {
+              code: lobbyCode,
+              status: "creating",
+              window: 15,
+              users: { userID: {votes: 1, restaurants: 2}},
+              winner: "undecided"
+            });
+          })
+        } else {
+          // No user is signed in.
+          console.log("no user signed in");
+        }
+      });
+    }
+  </script>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
