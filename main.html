@@ -9,7 +9,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles/my_style.css" />
+  <link rel="stylesheet" href="./styles/main.css" />
 
   <!-- Firebase 8 CDNs-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,7 +82,7 @@
     <div class="col-lg-6 mx-auto">
       <br /><br />
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <a class="btn btn-danger" href="gameCreation.html" role="button">Create Bracket</a>
+        <a class="btn btn-danger" href="createOrJoin.html" role="button">Create Bracket</a>
       </div>
     </div>
   </div>
@@ -90,39 +90,131 @@
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
       <div class="card">
-        <img src="images/sushi.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <img src="images/burger.jpg" class="card-img-top" alt="..." width="450" height="450">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"> <a href="./restaurant.html" id="BRH" onclick="setResData('BRH')"> Card
+              title</a></h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.</p>
         </div>
       </div>
     </div>
+
     <div class="col">
       <div class="card">
-        <img src="images/koreanFriedChicken.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <img src="images/seafood.jpg" class="card-img-top" alt="..." width="450" height="450">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"><a href="#" id="HSR" onclick="setRestDat('HSR')">Card title</a></h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.</p>
         </div>
       </div>
     </div>
+
     <div class="col">
       <div class="card">
-        <img src="images/ramen.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <img src="images/pho.jpg" class="card-img-top" alt="..." width="450" height="450">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"><a href="#" id="PHC" onclick="setRestDat('PHC')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/soup.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="MEN" onclick="setRestDat('MEN')">Card title</a></h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content.</p>
         </div>
       </div>
     </div>
+
     <div class="col">
       <div class="card">
-        <img src="images/burger.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <img src="images/tenen.jpg" class="card-img-top" alt="..." width="450" height="450">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"><a href="#" id="TEN" onclick="setRestDat('TEN')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/taco.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="ELT" onclick="setRestDat('ELT')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/pizza&pasta.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="NOK" onclick="setRestDat('NOK')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/sushi.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="SSK" onclick="setRestDat('SSK')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/losPollos.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="LPH" onclick="setRestDat('LPH')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/nare.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="NAR" onclick="setRestDat('NAR')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/koreanFriedChicken.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="NBN" onclick="setRestDat('NBN')">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="images/beef_noodle.jpg" class="card-img-top" alt="..." width="450" height="450">
+        <div class="card-body">
+          <h5 class="card-title"><a href="#" id="MDS" onclick="setRestDat('MDS')">Card title</a></h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.</p>
         </div>
@@ -138,10 +230,33 @@
     crossorigin="anonymous"></script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!-- <script src="./scripts/firebaseAPI.js"></script> -->
   <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+  <script>
+    function displayRestaurant() {
+      db.collection("restaurants").get()
+        .then(allRes => {
+          allRes.forEach(doc => {
+            var restaurantName = doc.data().name;
+            console.log(doc.data().name);
+            var resID = doc.data().code;
+            console.log(doc.data().code);
+            var resDesc = doc.data().description;
+            console.log(resDesc);
+            document.getElementById(resID).innerText = restaurantName;
+
+          })
+        })
+    }
+    displayRestaurant();
+
+    function setResData(id) {
+      localStorage.setItem('resID', id);
+    }
+  </script>
 </body>
 
 </html>
