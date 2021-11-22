@@ -1,0 +1,20 @@
+#topnav {
+  background-color: firebrick;
+}
+
+#nav-link {
+  color: white;
+}
+
+.card_mb-3 {
+  margin-top: 5%;
+  width: 70%;
+}
+
+.card-img-top {
+  width: 50%;
+}
+
+.card-image {
+  width: 50%;
+}
