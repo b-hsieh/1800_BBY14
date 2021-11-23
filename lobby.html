@@ -73,8 +73,32 @@
 
   </div>
   <h2>Timer</h2>
-  <button type="button" class="btn btn-danger">Add Restaurant</button>
+  <button type="button" class="btn btn-danger" onclick="listRest()">Add Restaurant</button>
   <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start Vote</button>
+
+  <!-- card layout for list -->
+
+    <!-- Templates for general use, not displayed -->
+    <template id="CardTemplate">
+      <div class="card py-2 mx-2">
+          <img class="card-image card-img-top" src="..." alt="...">
+          <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+              <a id="detailBtn" class="btn btn-danger card-href" onclick="addRestaurant()">Add</a>
+          </div>
+      </div>
+  </template>
+
+  <div class="container">
+      <!-- Here is container for cards  -->
+      <div class="container">
+          <div id="restaurants-go-here" class="row row-cols-auto">
+
+          </div>
+      </div>
+  </div>
 
 
   <script>
@@ -119,8 +143,44 @@
         }
       });
     }
-    createLobby();   
+    createLobby();
 
+    function displayCards(collection) {
+            let CardTemplate = document.getElementById("CardTemplate");
+
+            db.collection(collection).get()
+                .then(snap => {
+                    var i = 1;
+                    snap.forEach(doc => {    //iterate thru each doc
+                        var title = doc.data().name;
+                        var details = doc.data().description;
+                        var image = doc.data().image;
+                        let newcard = CardTemplate.content.cloneNode(true);
+
+                        //update title and text and image
+                        newcard.querySelector('.card-title').innerHTML = title;
+                        newcard.querySelector('.card-text').innerHTML = details;
+                        newcard.querySelector('.card-image').src = image;
+
+                        //give unique ids to all elements for future use
+                        newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+                        newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+                        newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
+                        //attach to gallery
+                        document.getElementById(collection + "-go-here").appendChild(newcard);
+                        i++;
+                    })
+                })
+        }
+    
+    function listRest() {
+      displayCards("restaurants");
+    }
+
+    function addRestaurant() {
+     
+    }
 
   </script>
 
