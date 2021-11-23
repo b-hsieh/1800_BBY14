@@ -75,8 +75,8 @@
       <input type="text" class="form-control" id="lobbyCode">
       <div id="emailHelp" class="form-text">Enter a code for your lobby</div>
     </div>
-
-    <button type="button" class="btn btn-primary" onclick="createLobby()">Submit</button>
+    <a class="btn btn-primary" href="./lobby.html" role="button" onclick="createLobby()">Submit</a>
+    <button type="button" class="btn btn-primary" onclick="createLobby()" >Submit</button>
   </form>
 
   <script>
@@ -93,7 +93,8 @@
             db.collection("games").doc(lobbyCode).set( {
               code: lobbyCode,
               status: "creating",
-              window: 15,
+              window: 5,
+              numUsers: 1,
               users: { host: {ID: userID, 
                               votes: 1, 
                               restaurants: 2}},

@@ -24,7 +24,7 @@
     <script src="./scripts/firebaseAPI.js"></script>
 
     <!-- Optional styles and scripts of your own -->
-    <link type="text/css" rel="stylesheet" href="styles/restaurant.css">
+    <link type="text/css" rel="stylesheet" href="styles/restaurantlist.css">
 </head>
 
 <body>
@@ -76,13 +76,13 @@
 
     <!-- Templates for general use, not displayed -->
     <template id="CardTemplate">
-        <div class="card py-2 mx-2" style="width: 100%;">
+        <div class="card py-2 mx-2" style="width: 100%; display: grid; grid-template-columns: 1fr 4fr;">
             <img class="card-image card-img-top" src="..." alt="...">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p>
-                <a class="btn btn-primary card-href">Get Details</a>
+                <a id="detailBtn" class="btn btn-danger card-href">Get Details</a>
             </div>
         </div>
     </template>
@@ -122,7 +122,7 @@
                         //update title and text and image
                         newcard.querySelector('.card-title').innerHTML = title;
                         newcard.querySelector('.card-text').innerHTML = details;
-                        newcard.querySelector('.card-image').src = image;  //hikes.jpg
+                        newcard.querySelector('.card-image').src = image;
 
                         //give unique ids to all elements for future use
                         newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
@@ -136,7 +136,7 @@
                 })
         }
  
-displayCards("restaurants");
+    displayCards("restaurants");
     </script>
 </body>
 

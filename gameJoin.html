@@ -86,19 +86,20 @@
 
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          var currentUser = db.collection("users").doc(user.uid)
+          var currentUser = db.collection("users").doc(user.uid);
           var userID = user.uid;
           //get the document for current user.
           currentUser.get()
           .then(userDoc => {
+            var userNum = db.collection("games").doc(lobbyCode.numUsers);
             db.collection("games").doc(lobbyCode).set( {
               code: lobbyCode,
               status: "creating",
               window: 15,
-              users: { user: {ID: userID, 
+              users: { user : {ID: userID, 
                               votes: 1, 
                               restaurants: 2}},
-              winner: "undecided"
+              winner: "undecided",
             },{merge:true});
           })
         } else {
