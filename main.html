@@ -73,7 +73,7 @@
   <div class="px-4 pt-5 my-5 text-center border-bottom">
     <div class="overflow-hidden" style="max-height: 30vh;">
       <div class="container px-5">
-        <img src="/images/bracket.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Bracket" width="700"
+        <img src="./images/bracket.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Bracket" width="700"
           height="500" loading="lazy">
       </div>
     </div>
@@ -82,141 +82,36 @@
     <div class="col-lg-6 mx-auto">
       <br /><br />
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <a class="btn btn-danger" href="gameCreation.html" role="button">Create Bracket</a>
+        <a class="btn btn-danger" href="createOrJoin.html" role="button">Create Bracket</a>
       </div>
     </div>
   </div>
 
+  <template id="CardTemplate">
+    <div class="card py-2 mx-2" style="width: 100%;">
+      <img class="card-image card-img-top" src="..." alt="...">
+      <div class="card-body">
+        <h5><a href="./restaurant.html" class="card-title">Card title</a></h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <a class="btn btn-danger card-href" onclick="setResData()">Get Details</a>
+        <button type="button" class="btn btn-danger fave">Favourite +</button>
+        <button type="button" class="btn btn-danger" onclick="writeGameList()">Game +</button>
+      </div>
+    </div>
+
+  </template>
+
+
+
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
-      <div class="card">
-        <img src="images/burger.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"> <a href="./restaurant.html" id="BRH" onclick="setResData('BRH')"> Card
-              title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
+      <div class="container">
+        <h1>How about this?</h1>
+        <div class="container">
+          <div id="restaurants-go-here" class="row row-cols-auto">
 
-    <div class="col">
-      <div class="card">
-        <img src="images/seafood.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="HSR" onclick="setRestDat('HSR')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/pho.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="PHC" onclick="setRestDat('PHC')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/soup.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="MEN" onclick="setRestDat('MEN')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/tenen.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="TEN" onclick="setRestDat('TEN')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/taco.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="ELT" onclick="setRestDat('ELT')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/pizza&pasta.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="NOK" onclick="setRestDat('NOK')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/sushi.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="SSK" onclick="setRestDat('SSK')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/losPollos.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="LPH" onclick="setRestDat('LPH')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/nare.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="NAR" onclick="setRestDat('NAR')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/koreanFriedChicken.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="NBN" onclick="setRestDat('NBN')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card">
-        <img src="images/beef_noodle.jpg" class="card-img-top" alt="..." width="450" height="450">
-        <div class="card-body">
-          <h5 class="card-title"><a href="#" id="MDS" onclick="setRestDat('MDS')">Card title</a></h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -236,26 +131,148 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
   <script>
-    function displayRestaurant() {
-      db.collection("restaurants").get()
-        .then(allRes => {
-          allRes.forEach(doc => {
-            var restaurantName = doc.data().name;
-            console.log(doc.data().name);
-            var resID = doc.data().code;
-            console.log(doc.data().code);
-            var resDesc = doc.data().description;
-            console.log(resDesc);
-            document.getElementById(resID).innerText = restaurantName;
+    // function displayRestaurant() {
+    //   db.collection("restaurants").get()
+    //     .then(allRes => {
+    //       allRes.forEach(doc => {
+    //         var restaurantName = doc.data().name;
+    //         console.log(doc.data().name);
+    //         var resID = doc.data().code;
+    //         console.log(doc.data().code);
+    //         var resDesc = doc.data().description;
+    //         console.log(resDesc);
+    //         document.getElementById(resID).innerText = restaurantName;
 
+    //       })
+    //     })
+    // }
+    // displayRestaurant();
+
+    function displayCards(collection) {
+      let CardTemplate = document.getElementById("CardTemplate");
+
+      db.collection(collection).get()
+        .then(snap => {
+          var i = 1;
+          snap.forEach(doc => {    //iterate thru each doc
+            var title = doc.data().name;
+            var details = doc.data().description;
+            var image = doc.data().image;
+            var code = doc.data().code;
+            let newcard = CardTemplate.content.cloneNode(true);
+
+
+
+            //update title and text and image
+            newcard.querySelector('.card-title').innerHTML = title;
+            newcard.querySelector('.card-text').innerHTML = details;
+            newcard.querySelector('.card-image').src = image;  //hikes.jpg
+
+            newcard.querySelector('.card-href').href = "restaurant.html?collection=" + collection + "?id=" + doc.id;
+            //give unique ids to all elements for future use
+            newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+            newcard.querySelector('.card-title').setAttribute("onclick", "setResData(" + code + ")");
+            newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+            newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+            newcard.querySelector('.card-title').setAttribute("class", "ctitle");
+
+            newcard.querySelector('.fave').setAttribute("onclick", "writeFave()");
+
+            //attach to gallery
+            document.getElementById(collection + "-go-here").appendChild(newcard);
+            i++;
+
+
+            localStorage.setItem("code" + (i - 1), code);
           })
         })
     }
-    displayRestaurant();
 
-    function setResData(id) {
-      localStorage.setItem('resID', id);
+    displayCards("restaurants");
+
+    var code = db.collection("restaurants")
+    function writeFave() {
+      console.log(document.querySelector('.card-title').val());
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid);
+          var userID = user.uid;
+          currentUser.get()
+            .then(userDoc => {
+              db.collection("users").doc(userID).collection("favourites").add({
+                name: document.getElementById("ctitle"),
+                // code: code,
+                description: document.getElementById("ctext")
+              });
+            })
+        }
+      })
     }
+
+    // db.collection("restaurants").get()
+    //   .then(doc => {
+    //     var name = doc.data().name;
+    //   })
+    db.collection("restaurants").get()
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          var title = doc.data().name;
+          var code = doc.data().code;
+          console.log("title is " + code);
+        })
+      })
+
+
+
+    function setResData(code) {
+      localStorage.setItem('code', code);
+    }
+
+
+    // var restaurantName = document.getElementsByClassName("")
+    // db.collection("restaurants").where("name", "==", restaurantID)
+    //         .get()
+    //         .then(queryRestaurant => {
+    //             size = queryRestaurant.size;
+    //             Restaurants = queryRestaurant.docs;
+    //             // console.log(Restaurants[0].data());
+    //             if (size = 1) {
+    //                 var thisRestaurant = Restaurants[0].data();
+    //                 name = thisRestaurant.name;
+    //                 // console.log(name);
+    //                 description = thisRestaurant.description;
+    //                 // console.log(description);
+    //                 code = thisRestaurant.code;
+    //                 // console.log(code);
+    //                 document.getElementById("RestaurantName").innerHTML = name;
+    //                 document.getElementById("description").innerHTML = description;
+    //             } else {
+    //                 console.log("Query has more than one data");
+    //             }
+    //         })
+
+
+
+    function writeGameList() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid)
+          var userID = user.uid;
+          currentUser.get()
+            .then(userDoc => {
+              db.collection("users").doc(userID).collection("gameList").add({
+                name: title,
+                code: code,
+                description: details
+              });
+            })
+        } else {
+          console.log("no user signed in");
+        }
+      })
+    }
+
+
   </script>
 </body>
 

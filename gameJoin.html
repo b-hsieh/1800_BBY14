@@ -69,7 +69,45 @@
     </div>
   </header>
 
+  <form>
+    <div class="mb-3">
+      <label for="lobbyCode" class="form-label">Lobby Code</label>
+      <input type="text" class="form-control" id="lobbyCode">
+      <div id="emailHelp" class="form-text">Enter a lobby code</div>
+    </div>
 
+    <button type="button" class="btn btn-primary" onclick="joinLobby()">Submit</button>
+  </form>
+
+
+  <script>
+    function joinLobby() {
+      let lobbyCode = document.getElementById("lobbyCode").value;
+
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid)
+          var userID = user.uid;
+          //get the document for current user.
+          currentUser.get()
+          .then(userDoc => {
+            db.collection("games").doc(lobbyCode).set( {
+              code: lobbyCode,
+              status: "creating",
+              window: 15,
+              users: { user: {ID: userID, 
+                              votes: 1, 
+                              restaurants: 2}},
+              winner: "undecided"
+            },{merge:true});
+          })
+        } else {
+          // No user is signed in.
+          console.log("no user signed in");
+        }
+      });
+    }
+  </script>
 
   <!-- Optional JavaScript; choose one of the two! -->
 

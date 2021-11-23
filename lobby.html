@@ -68,8 +68,22 @@
       </div>
     </div>
   </header>
-
-
+  <h1>Lobby Code</h1>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Host</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
@@ -77,6 +91,40 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+
+  <script>
+      
+      function createLobby() {
+        var lobbyCode = Math.floor(Math.random() * 10000);
+          console.log(lobbyCode);    
+
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid)
+          var userID = user.uid;
+          //get the document for current user.
+          currentUser.get()
+          .then(userDoc => {
+            db.collection("games").doc(lobbyCode).set( {
+              code: lobbyCode,
+              status: "creating",
+              window: 15,
+              users: { host: {ID: userID, 
+                              votes: 1, 
+                              restaurants: 2}},
+              winner: "undecided"
+            });
+          })
+        } else {
+          // No user is signed in.
+          console.log("no user signed in");
+        }
+      });
+    }
+    createLobby();   
+
+
+  </script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
