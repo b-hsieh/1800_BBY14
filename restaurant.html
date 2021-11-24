@@ -130,7 +130,7 @@
         // }
         // showDetails();
 
-        let restaurantID = localStorage.getItem('code1');
+        let restaurantID = localStorage.getItem('code');
 
         db.collection("restaurants").where("code", "==", restaurantID)
             .get()

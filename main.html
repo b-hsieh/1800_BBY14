@@ -62,7 +62,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+            <li><a id="loginStat" class="dropdown-item" href="login.html">Sign in</a></li>
           </ul>
         </div>
       </div>
@@ -94,9 +94,9 @@
         <h5><a href="./restaurant.html" class="card-title">Card title</a></h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
           card's content.</p>
-        <a class="btn btn-danger card-href" onclick="setResData()">Get Details</a>
+        <a class="btn btn-danger card-href detail-btn">Get Details</a>
         <button type="button" class="btn btn-danger fave">Favourite +</button>
-        <button type="button" class="btn btn-danger" onclick="writeGameList()">Game +</button>
+        <button type="button" class="btn btn-danger game">Game +</button>
       </div>
     </div>
 
@@ -131,23 +131,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
   <script>
-    // function displayRestaurant() {
-    //   db.collection("restaurants").get()
-    //     .then(allRes => {
-    //       allRes.forEach(doc => {
-    //         var restaurantName = doc.data().name;
-    //         console.log(doc.data().name);
-    //         var resID = doc.data().code;
-    //         console.log(doc.data().code);
-    //         var resDesc = doc.data().description;
-    //         console.log(resDesc);
-    //         document.getElementById(resID).innerText = restaurantName;
-
-    //       })
-    //     })
-    // }
-    // displayRestaurant();
-
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById("loginStat").innerHTML = "Sign Out"
+      } else {
+        document.getElementById("loginStat").innerHTML = "Sign In"
+      }
+    })
     function displayCards(collection) {
       let CardTemplate = document.getElementById("CardTemplate");
 
@@ -171,100 +161,82 @@
             newcard.querySelector('.card-href').href = "restaurant.html?collection=" + collection + "?id=" + doc.id;
             //give unique ids to all elements for future use
             newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-            newcard.querySelector('.card-title').setAttribute("onclick", "setResData(" + code + ")");
+            newcard.querySelector('.card-title').setAttribute("onclick", "setResData('" + code + "')");
             newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
             newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
             newcard.querySelector('.card-title').setAttribute("class", "ctitle");
 
-            newcard.querySelector('.fave').setAttribute("onclick", "writeFave()");
-
+            newcard.querySelector('.game').setAttribute("onclick", "writeGameList(); setResData('" + code + "')");
+            newcard.querySelector('.fave').setAttribute("onclick", "writeFave(); setResData('" + code + "')");
+            newcard.querySelector('.detail-btn').setAttribute("onclick", `setResData('${code}')`)
             //attach to gallery
             document.getElementById(collection + "-go-here").appendChild(newcard);
             i++;
 
 
-            localStorage.setItem("code" + (i - 1), code);
+            // localStorage.setItem("code" + (i - 1), code);
           })
         })
     }
 
     displayCards("restaurants");
 
-    var code = db.collection("restaurants")
-    function writeFave() {
-      console.log(document.querySelector('.card-title').val());
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          var currentUser = db.collection("users").doc(user.uid);
-          var userID = user.uid;
-          currentUser.get()
-            .then(userDoc => {
-              db.collection("users").doc(userID).collection("favourites").add({
-                name: document.getElementById("ctitle"),
-                // code: code,
-                description: document.getElementById("ctext")
-              });
-            })
-        }
-      })
-    }
-
-    // db.collection("restaurants").get()
-    //   .then(doc => {
-    //     var name = doc.data().name;
-    //   })
-    db.collection("restaurants").get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          var title = doc.data().name;
-          var code = doc.data().code;
-          console.log("title is " + code);
-        })
-      })
-
-
-
     function setResData(code) {
       localStorage.setItem('code', code);
     }
 
-
-    // var restaurantName = document.getElementsByClassName("")
-    // db.collection("restaurants").where("name", "==", restaurantID)
-    //         .get()
-    //         .then(queryRestaurant => {
-    //             size = queryRestaurant.size;
-    //             Restaurants = queryRestaurant.docs;
-    //             // console.log(Restaurants[0].data());
-    //             if (size = 1) {
-    //                 var thisRestaurant = Restaurants[0].data();
-    //                 name = thisRestaurant.name;
-    //                 // console.log(name);
-    //                 description = thisRestaurant.description;
-    //                 // console.log(description);
-    //                 code = thisRestaurant.code;
-    //                 // console.log(code);
-    //                 document.getElementById("RestaurantName").innerHTML = name;
-    //                 document.getElementById("description").innerHTML = description;
-    //             } else {
-    //                 console.log("Query has more than one data");
-    //             }
-    //         })
-
-
+    var code = db.collection("restaurants")
+    function writeFave() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          let resID = localStorage.getItem("code")
+          db.collection("restaurants").where("code", "==", resID)
+            .get()
+            .then(queryRest => {
+              Rests = queryRest.docs;
+              var thisRest = Rests[0].data();
+              var title = thisRest.name;
+              var code = thisRest.code;
+              var text = thisRest.description;
+              var currentUser = db.collection("users").doc(user.uid);
+              var userID = user.uid;
+              currentUser.get()
+                .then(userDoc => {
+                  db.collection("users").doc(userID).collection("favourites").add({
+                    name: title,
+                    code: code,
+                    description: text
+                  });
+                })
+            })
+        } else {
+          console.log("no user signed in");
+        }
+      })
+    }
 
     function writeGameList() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          var currentUser = db.collection("users").doc(user.uid)
-          var userID = user.uid;
-          currentUser.get()
-            .then(userDoc => {
-              db.collection("users").doc(userID).collection("gameList").add({
-                name: title,
-                code: code,
-                description: details
-              });
+          let resID = localStorage.getItem("code")
+          db.collection("restaurants").where("code", "==", resID)
+            .get()
+            .then(queryRest => {
+              Rests = queryRest.docs;
+              var thisRest = Rests[0].data();
+              var title = thisRest.name;
+              var code = thisRest.code;
+              var text = thisRest.description;
+              var currentUser = db.collection("users").doc(user.uid);
+              var userID = user.uid;
+              currentUser.get()
+                .then(userDoc => {
+                  db.collection("users").doc(userID).collection("gameList").add({
+                    name: title,
+                    code: code,
+                    description: text
+                  });
+                })
             })
         } else {
           console.log("no user signed in");

@@ -188,13 +188,13 @@
     }
 
     function setData(id) {
-      localStorage.setItem('restID', id);
+      localStorage.setItem('code', id);
     }
 
     function addRestaurant() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          let resID = localStorage.getItem("restID");
+          let resID = localStorage.getItem("code");
           db.collection("restaurants").where("code", "==", resID)
             .get()
             .then(queryRest => {
