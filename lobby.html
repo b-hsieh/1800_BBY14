@@ -68,16 +68,54 @@
       </div>
     </div>
   </header>
-  <h1>Lobby Code</h1>
+  <h1>Lobby Code: <span id="codeNumber"></span></h1>
   <div id="options">
 
   </div>
+<<<<<<< HEAD
   <h2 id="timer">Timer</h2>
   <button type="button" class="btn btn-danger">Add Restaurant</button>
   <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start Vote</button>
 
 
   <script>
+=======
+  <h2>Timer</h2>
+  <button type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
+  <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
+  <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
+    Vote</button> -->
+
+  <!-- card layout for list -->
+
+  <!-- Templates for general use, not displayed -->
+  <template id="CardTemplate">
+    <div class="card py-2 mx-2">
+      <img class="card-image card-img-top" src="..." alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+        <a id="addBtn" class="btn btn-danger card-href card-add" onclick="hideList()">Add</a>
+      </div>
+    </div>
+  </template>
+
+  <div id="restList" class="container" style="display:none">
+    <!-- Here is container for cards  -->
+    <div class="container">
+      <div id="restaurants-go-here" class="row row-cols-auto">
+
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function startVote() {
+
+    }
+>>>>>>> 2508002f63a16cefe2879c78f0d83222c3572674
   </script>
 
   <!-- Optional JavaScript; choose one of the two! -->
@@ -88,39 +126,131 @@
     crossorigin="anonymous"></script>
 
   <script>
-      
-      function createLobby() {
-        var lobbyCode = Math.floor(Math.random() * 10000);
-          console.log(lobbyCode);    
+    var lobbyCode = Math.floor(Math.random() * 10000);
+    console.log(lobbyCode);
+    document.getElementById("codeNumber").innerHTML = lobbyCode;
 
+    function createLobby() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
           var userID = user.uid;
           //get the document for current user.
           currentUser.get()
-          .then(userDoc => {
-            db.collection("games").doc(lobbyCode).set( {
-              code: lobbyCode,
-              status: "creating",
-              window: 15,
-              users: { host: {ID: userID, 
-                              votes: 1, 
-                              restaurants: 2}},
-              winner: "undecided"
-            });
-          })
+            .then(userDoc => {
+              db.collection("games").doc(lobbyCode).set({
+                code: lobbyCode,
+                status: "creating",
+                window: 15,
+                users: {
+                  host: {
+                    ID: userID,
+                    votes: 1,
+                    restaurants: 2
+                  }
+                },
+                winner: "undecided"
+              });
+            })
         } else {
           // No user is signed in.
           console.log("no user signed in");
         }
       });
     }
-    createLobby();   
+    createLobby();
+
+    function displayCards(collection) {
+      let CardTemplate = document.getElementById("CardTemplate");
+
+      
+
+      db.collection(collection).get()
+        .then(snap => {
+          var i = 1;
+          snap.forEach(doc => {    //iterate thru each doc
+            var title = doc.data().name;
+            var details = doc.data().description;
+            var image = doc.data().image;
+            var code = doc.data().code;
+            let newcard = CardTemplate.content.cloneNode(true);
+
+            //update title and text and image
+            newcard.querySelector('.card-title').innerHTML = title;
+            newcard.querySelector('.card-text').innerHTML = details;
+            newcard.querySelector('.card-image').src = image;
+
+            //give unique ids to all elements for future use
+            newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+            newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+            newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
+            newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant()`);
+            //attach to gallery
+            document.getElementById(collection + "-go-here").appendChild(newcard);
+            i++;
+          })
+        })
+      
+    }
+
+    function hideList() {
+      var displayState = document.getElementById('restList');
+      
+      if (displayState.style.display === "none") {
+        displayState.style.display = "block";
+      } else {
+        displayState.style.display = "none";
+      }
+      console.log(displayState.style.display);
+    }
+
+    function listRest() {    
+      displayCards("restaurants");
+      console.log(lobbyCode);
+    }
+
+    function setData(id) {
+      localStorage.setItem('code', id);
+    }
+
+    function addRestaurant() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          let resID = localStorage.getItem("code");
+          db.collection("restaurants").where("code", "==", resID)
+            .get()
+            .then(queryRest => {
+
+              Rests = queryRest.docs;
+              var thisRest = Rests[0].data();
+              console.log(thisRest);
+              var title = thisRest.name;
+              // console.log(title);
+              var code = thisRest.code;
+              var details = thisRest.description;
+              var currentUser = db.collection("users").doc(user.uid)
+              var userID = user.uid;
+              var restaurant = db.collection("restaurants").doc(user.uid)
+              currentUser.get()
+                .then(userDoc => {
+                  db.collection("users").doc(userID).collection("gameList").add({
+                    name: title,
+                    code: code,
+                    description: details
+                  });
+                })
+            })
+
+        } else {
+          console.log("no user signed in");
+        }
+      })
+    }
+
 
 
   </script>
-
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

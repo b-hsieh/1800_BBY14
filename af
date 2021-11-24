@@ -1,0 +1,92 @@
+[33m2e20f32[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Jason code to add the restaurant to the list
+[33m0453b9d[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m6f7bc2e[m commit for pull
+[33m83b5055[m Ryan - Linked restaurant list to lobby onclick
+[33mc865e19[m Ryan - updated the restaurantlist .html and .css
+[33m2209a29[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m29aebba[m Modified join, create, and lobby
+[33m8598a59[m commit for pull
+[33mcb54a32[m Ryan - comitting partial changes to createOrJoin.html and lobby.html
+[33m033e5ba[m commit for push
+[33mae8fcc7[m working restaurnat.html by Jason
+[33m69739a3[m Ryan - added an image
+[33mc2bb7f5[m Added join functionality
+[33m3964bc3[m commit for pull
+[33med204f7[m commit for pull
+[33ma876222[m Changes to game creation
+[33m7865ae2[m Changed the game creation pages, created games collection with details in firestore
+[33md1f450d[m Ryan - Added restarauntlist.html and coded it to make cards with pictures and description
+[33md677f5f[m Ryan - Changed favourites to pull the storage location of the restaurant from the db
+[33mfab04fe[m conflict
+[33mad36d18[m Ryan
+[33ma8c3ad5[m Ryan - update to favourites
+[33m7287dbe[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m2de2b3c[m Jason - try to solve the push and pull problem
+[33m37a6de4[m Ryan - Update to favourites.html js
+[33mb2f8bb7[m add pizza and pasta img by Jason
+[33m2fd7508[m test
+[33m2a4cca0[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33ma49c7e9[m Ryan - added a function to pull db info to the favourites.html
+[33m62c4581[m Jason - Makes the clicking on the favourite+ button to add restaurant info into the favourites collection under the usres collection. The favourite button is in restaurant.html
+[33m904cfac[m commit for pull
+[33md049a35[m Ryan - Add firebase CDN and .js reference to restaurant.html
+[33mf850a2a[m Ryan
+[33mca99a5c[m Ryan - updated addfavourite.html
+[33m5c45173[m minor change by jason
+[33ma65aa73[m Ryan - Added to the firebase CDNs to a number of html files
+[33mb4d444e[m Ryan - Corrected a heading in addfavorite.html
+[33ma628e0e[m Ryan - Corrected a type in the firebase api reference
+[33m82c31cf[m trying to figure out the scripts by Jason
+[33m9167157[m Ryan - Added addfavourite.html
+[33m6006a27[m Ryan - added id elements to the card div tags in favourites
+[33m71144a3[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33mc5a67ad[m Ryan - Corrected a typo in the db reference for the js functions
+[33md6c2afd[m Ryan - added a function to retrieve restaurant names
+[33m6242b19[m Ryan - Commenting out a function so it does not continually create records
+[33m90d95fa[m Updated db reference in functions for friends.html
+[33m75b184a[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33mb91e842[m Ryan - Corrected error in recordFriend function
+[33m831d43f[m initialized firestore db in firebaseAPI.js
+[33m3e9eea8[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33mbacc1df[m Added users collection to firestore.
+[33m786ce34[m Ryan - correcting error in friendName code
+[33m075752d[m Ryan - adding db function to friends
+[33ma179207[m Ryan - Attempting to add name to database and call it into a friends list placeholder
+[33md9ee0fe[m change button color in restaurant.html by Jason
+[33mbfa2d7a[m Ryan - added buttons to the friends list page
+[33ma9778e8[m Ryan - removed the centerpiece picture at the top of friends.html
+[33md62c3fe[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m16421b2[m Ryan - Changes to friends list formatting
+[33m95a9b70[m make a tag to link the serach.html and restaurant.html
+[33m6400e1c[m Ryan - Added some photos to the friends  section and denoted some sections in the html with notes
+[33maf81e09[m Ryan - added some raw content to favorites.
+[33m6d5422d[m Added some images to gameCreation.html
+[33m3cbc148[m Minor color changes to buttons
+[33m5fbd016[m Added some more pages and linking
+[33m0f81b5f[m Added pages that will be needed in the future, also linked some pages together
+[33mcdeeb31[m login changes
+[33m766ca5b[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33mdfa0dd4[m login.html changes
+[33m8b69e54[m change the navbar of restaurant.html and search.html as others. Connect home button with main.html, friend button with friends.html, sign out button with login.html. Makes unnecessary stuffs on login.html to comments, please check it
+[33m4f6b8bb[m add search.css
+[33ma90c970[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m6f78b67[m Added login widget
+[33md5f489a[m Changed formatting for the header on login.html
+[33mb1bc4c2[m change search.html and add restaurant.html by Jason
+[33m2e90a9c[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m68a0b5a[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33m933b9a0[m Added friends.html and made some css color and format changes
+[33md81a2ca[m Merge branch 'main' of https://github.com/b-hsieh/1800_BBY14
+[33mcfd25e3[m Add files via upload
+[33m52490e1[m Added login.html and firebaseAPI.js
+[33m01e8f41[m Add files via upload
+[33mc07e07b[m Add files via upload
+[33m798fb58[m Search page by Jason
+[33m277b8b1[m Added main.html and images
+[33m7adaea9[m Adding one line to README from Brian
+[33ma137af0[m Adding one line to README from Brian
+[33m1341471[m 2nd attempt at resolution
+[33ma42478a[m fix line problem from Jason
+[33m4aeb6cf[m Added one line intro to README file for Jason
+[33m8fbb096[m Added on line intro to README file for Ryan
+[33m15a1b3a[m Initial commit

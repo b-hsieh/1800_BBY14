@@ -24,15 +24,30 @@
   grid-template-columns: 50% 50%;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 20% 80%;
-}
-
 .card-body {
   grid-column: 2 / 3;
 }
 
 #drpDwn {
   text-align: center;
+}
+.card_mb-3 {
+  margin-top: 5%;
+  width: 70%;
+}
+
+.card-img-top {
+  width: 50%;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  display: grid; 
+  grid-template-columns: 1fr 4fr;
+  width: 100%;
+  height: 200px;
 }
