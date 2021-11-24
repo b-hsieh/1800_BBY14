@@ -120,13 +120,13 @@
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
           var userID = user.uid;
-          var userName = db.collection("users").doc(user.name);
           //get the document for current user.
           currentUser.get()
             .then(userDoc => {
               db.collection("games").doc(lobbyCode).set({
                 code: lobbyCode,
                 status: "creating",
+                enableVote: false,
                 window: 15,
                 numUsers: 1,
                 users: {

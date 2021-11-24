@@ -87,27 +87,28 @@
 
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
-          var currentUser = db.collection("users").doc(user.uid);
-          var userID = user.uid;
-          var userName = db.collection("users").doc(user.name);
+          currentUser = db.collection("users").doc(user.uid);
           //get the document for current user.
           currentUser.get()
-          .then(userDoc => {
-            db.collection("games").doc(lobbyCode).set( {
-              users: { user : {ID: userID, 
-                              name: userName,
-                              votes: 1, 
-                              restaurants: 2}},
-            },{merge:true});
-          })
-          .then(
-            window.location.replace("./lobby.html")
-          );
+            .then(userDoc => {
+              var userName = userDoc.data().name;
+              var userID = user.uid;
+              console.log(userName);
+              db.collection("games").doc(lobbyCode).set({
+                users: {
+                  [userID]: {
+                    ID: userID,
+                    name: userName,
+                    votes: 1,
+                  }
+                },
+              }, { merge: true });
+            });
         } else {
           // No user is signed in.
           console.log("no user signed in");
         }
-      });
+      })
     }
   </script>
 

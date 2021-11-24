@@ -74,7 +74,8 @@
   </div>
   <h2 id="timer">Timer</h2>
   <button type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
-  <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
+  <button type="button" id="start" class="btn btn-danger" onclick="startGame()">Start Game</button>
+  <button type="button" id="vote" class="btn btn-danger" disabled>Vote</button>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
 
@@ -223,7 +224,7 @@
       document.getElementById("vote").disabled = false;
       document.getElementById("start").disabled = true;
       document.getElementById("start").style.visibility = "hidden";
-      db.collection("games").doc("abcd").update({
+      db.collection("games").doc(lobbyCode).update({
         enableVote: true,
         status: "inProgress"
       })
@@ -232,7 +233,7 @@
       }
       setTimeout(
         () => {
-          db.collection("games").doc("abcd").update({
+          db.collection("games").doc(lobbyCode).update({
             status: "finished"
           })
         },
@@ -240,17 +241,26 @@
       );
     }
     function increment() {
-      db.collection("games").doc("abcd").update({
+      db.collection("games").doc(lobbyCode).update({
         window: firebase.firestore.FieldValue.increment(-1)
       })
     }
 
     function disableVote() {
-      db.collection("games").doc("abcd")
-        .onSnapshot(abcdDoc => {
-          if (abcdDoc.data().window <= 0 || abcdDoc.data().status == "creating") {
+      db.collection("games").doc(lobbyCode)
+        .onSnapshot(lobbyCodeDoc => {
+          if (lobbyCodeDoc.data().window <= 0 || lobbyCodeDoc.data().status == "creating") {
             document.getElementById("vote").disabled = true;
           }
+
+          if (lobbyCodeDoc.data().status == "inProgress") {
+            document.getElementById("start").style.visibility = "hidden";
+          }
+
+          if (lobbyCodeDoc.data().status == "inProgress") {
+            document.getElementById("vote").disabled = false;
+          }
+
         })
     }
     disableVote();
