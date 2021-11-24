@@ -73,7 +73,7 @@
 
   </div>
   <h2>Timer</h2>
-  <button type="button" class="btn btn-danger" onclick="listRest()">Add Restaurant</button>
+  <button type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
   <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
@@ -88,12 +88,12 @@
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
           card's content.</p>
-        <a id="addBtn" class="btn btn-danger card-href card-add">Add</a>
+        <a id="addBtn" class="btn btn-danger card-href card-add" onclick="hideList()">Add</a>
       </div>
     </div>
   </template>
 
-  <div class="container">
+  <div id="restList" class="container" style="display:none">
     <!-- Here is container for cards  -->
     <div class="container">
       <div id="restaurants-go-here" class="row row-cols-auto">
@@ -154,6 +154,8 @@
     function displayCards(collection) {
       let CardTemplate = document.getElementById("CardTemplate");
 
+      
+
       db.collection(collection).get()
         .then(snap => {
           var i = 1;
@@ -180,9 +182,21 @@
             i++;
           })
         })
+      
     }
 
-    function listRest() {
+    function hideList() {
+      var displayState = document.getElementById('restList');
+      
+      if (displayState.style.display === "none") {
+        displayState.style.display = "block";
+      } else {
+        displayState.style.display = "none";
+      }
+      console.log(displayState.style.display);
+    }
+
+    function listRest() {    
       displayCards("restaurants");
       console.log(lobbyCode);
     }
@@ -224,6 +238,8 @@
         }
       })
     }
+
+
 
   </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
