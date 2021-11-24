@@ -73,7 +73,7 @@
 
   </div>
   <h2 id="timer">Timer</h2>
-  <button type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
+  <button id="listOf" type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
   <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
@@ -163,7 +163,7 @@
         document.getElementById("listOf").innerText = "Close List";
       } else {
         displayState.style.display = "none";
-        document.getElementById("listOf").innerText = "Restaurant List";
+        document.getElementById("listOf").innerText = "Add Restaurant";
       }
       console.log(displayState.style.display);
     }
