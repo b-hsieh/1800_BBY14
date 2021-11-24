@@ -30,18 +30,18 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="main.html" class="nav-link px-2 link-light">
-              <img src="images/home.png" alt="Home" width="32" height="32"><img>
+            <img src="images/home.png" alt="Home" width="32" height="32">
               Home
             </a>
           </li>
           <li><a href="favourites.html" class="nav-link px-2 link-light">
-              <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
+            <img src="images/favourites.png" alt="Favourites" width="32" height="32">
               Favourites
             </a>
           </li>
           <li>
             <a href="friends.html" class="nav-link px-2 link-light">
-              <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
+            <img src="images/friends.png" alt="Friends" width="32" height="32">
               Friends
             </a>
           </li>
@@ -73,7 +73,7 @@
 
   </div>
   <h2>Timer</h2>
-  <button type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
+  <button id="listOf" type="button" class="btn btn-danger" onclick="listRest();hideList()">Restaurant List</button>
   <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
@@ -88,12 +88,12 @@
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
           card's content.</p>
-        <a id="addBtn" class="btn btn-danger card-href card-add" onclick="hideList()">Add</a>
+        <a id="addBtn" class="btn btn-danger card-href card-add">Add</a>
       </div>
     </div>
   </template>
 
-  <div id="restList" class="container" style="display:none">
+  <div id="restList" class="container">
     <!-- Here is container for cards  -->
     <div class="container">
       <div id="restaurants-go-here" class="row row-cols-auto">
@@ -176,7 +176,7 @@
             newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
             newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
-            newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant()`);
+            newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant(); hideList();`);
             //attach to gallery
             document.getElementById(collection + "-go-here").appendChild(newcard);
             i++;
@@ -188,10 +188,12 @@
     function hideList() {
       var displayState = document.getElementById('restList');
       
-      if (displayState.style.display === "none") {
+      if (displayState.style.display != "block") {
         displayState.style.display = "block";
+        document.getElementById("listOf").innerText = "Close List";
       } else {
         displayState.style.display = "none";
+        document.getElementById("listOf").innerText = "Restaurant List";
       }
       console.log(displayState.style.display);
     }
