@@ -72,15 +72,7 @@
   <div id="options">
 
   </div>
-<<<<<<< HEAD
   <h2 id="timer">Timer</h2>
-  <button type="button" class="btn btn-danger">Add Restaurant</button>
-  <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start Vote</button>
-
-
-  <script>
-=======
-  <h2>Timer</h2>
   <button type="button" class="btn btn-danger" onclick="listRest();hideList()">Add Restaurant</button>
   <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
@@ -115,7 +107,6 @@
     function startVote() {
 
     }
->>>>>>> 2508002f63a16cefe2879c78f0d83222c3572674
   </script>
 
   <!-- Optional JavaScript; choose one of the two! -->
@@ -126,44 +117,14 @@
     crossorigin="anonymous"></script>
 
   <script>
-    var lobbyCode = Math.floor(Math.random() * 10000);
+    let lobbyCode = localStorage.getItem("lobbyCode");
     console.log(lobbyCode);
     document.getElementById("codeNumber").innerHTML = lobbyCode;
-
-    function createLobby() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          var currentUser = db.collection("users").doc(user.uid)
-          var userID = user.uid;
-          //get the document for current user.
-          currentUser.get()
-            .then(userDoc => {
-              db.collection("games").doc(lobbyCode).set({
-                code: lobbyCode,
-                status: "creating",
-                window: 15,
-                users: {
-                  host: {
-                    ID: userID,
-                    votes: 1,
-                    restaurants: 2
-                  }
-                },
-                winner: "undecided"
-              });
-            })
-        } else {
-          // No user is signed in.
-          console.log("no user signed in");
-        }
-      });
-    }
-    createLobby();
 
     function displayCards(collection) {
       let CardTemplate = document.getElementById("CardTemplate");
 
-      
+
 
       db.collection(collection).get()
         .then(snap => {
@@ -191,12 +152,12 @@
             i++;
           })
         })
-      
+
     }
 
     function hideList() {
       var displayState = document.getElementById('restList');
-      
+
       if (displayState.style.display === "none") {
         displayState.style.display = "block";
       } else {
@@ -205,7 +166,7 @@
       console.log(displayState.style.display);
     }
 
-    function listRest() {    
+    function listRest() {
       displayCards("restaurants");
       console.log(lobbyCode);
     }
@@ -248,7 +209,51 @@
       })
     }
 
+    function showTimer() {
+      db.collection("games").doc(lobbyCode)
+        .onSnapshot(lobbyCodeDoc => {
+          var time = lobbyCodeDoc.data().window;
+          console.log(time);
+          document.getElementById("timer").innerHTML = time;
+        })
+    }
+    showTimer();
 
+    function startGame() {
+      document.getElementById("vote").disabled = false;
+      document.getElementById("start").disabled = true;
+      document.getElementById("start").style.visibility = "hidden";
+      db.collection("games").doc("abcd").update({
+        enableVote: true,
+        status: "inProgress"
+      })
+      for (let i = 0; i < 15; i++) {
+        setTimeout(increment, i * 1000);
+      }
+      setTimeout(
+        () => {
+          db.collection("games").doc("abcd").update({
+            status: "finished"
+          })
+        },
+        15 * 1000
+      );
+    }
+    function increment() {
+      db.collection("games").doc("abcd").update({
+        window: firebase.firestore.FieldValue.increment(-1)
+      })
+    }
+
+    function disableVote() {
+      db.collection("games").doc("abcd")
+        .onSnapshot(abcdDoc => {
+          if (abcdDoc.data().window <= 0 || abcdDoc.data().status == "creating") {
+            document.getElementById("vote").disabled = true;
+          }
+        })
+    }
+    disableVote();
 
   </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
