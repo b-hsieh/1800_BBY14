@@ -83,25 +83,26 @@
   <script>
     function joinLobby() {
       let lobbyCode = document.getElementById("lobbyCode").value;
+      localStorage.setItem("lobbyCode", lobbyCode);
 
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           var currentUser = db.collection("users").doc(user.uid);
           var userID = user.uid;
+          var userName = db.collection("users").doc(user.name);
           //get the document for current user.
           currentUser.get()
           .then(userDoc => {
-            var userNum = db.collection("games").doc(lobbyCode.numUsers);
             db.collection("games").doc(lobbyCode).set( {
-              code: lobbyCode,
-              status: "creating",
-              window: 15,
               users: { user : {ID: userID, 
+                              name: userName,
                               votes: 1, 
                               restaurants: 2}},
-              winner: "undecided",
             },{merge:true});
           })
+          .then(
+            window.location.replace("./lobby.html")
+          );
         } else {
           // No user is signed in.
           console.log("no user signed in");

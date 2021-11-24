@@ -75,14 +75,13 @@
       <input type="text" class="form-control" id="lobbyCode">
       <div id="emailHelp" class="form-text">Enter a code for your lobby</div>
     </div>
-    <a class="btn btn-primary" href="./lobby.html" role="button" onclick="createLobby()">Submit</a>
     <button type="button" class="btn btn-primary" onclick="createLobby()" >Submit</button>
   </form>
 
   <script>
     function createLobby() {
       let lobbyCode = document.getElementById("lobbyCode").value;
-
+      localStorage.setItem("lobbyCode", lobbyCode);
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
@@ -93,13 +92,16 @@
             db.collection("games").doc(lobbyCode).set( {
               code: lobbyCode,
               status: "creating",
-              window: 5,
+              window: 15,
               numUsers: 1,
               users: { host: {ID: userID, 
                               votes: 1, 
                               restaurants: 2}},
               winner: "undecided"
-            });
+            })
+            .then(
+              window.location.replace("./lobby.html")
+            );
           })
         } else {
           // No user is signed in.

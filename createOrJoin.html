@@ -11,15 +11,15 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/my_style.css" />
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  
-    <!-- Link to the api keys for your firebase project -->
-    <script src="./scripts/firebaseAPI.js"></script>
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+  <!-- Link to the api keys for your firebase project -->
+  <script src="./scripts/firebaseAPI.js"></script>
 
   <title>COMP 1800 WebApp</title>
 </head>
@@ -76,15 +76,17 @@
       <img src="images/multiplayer.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Create Lobby</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="lobby.html" class="btn btn-danger stretched-link d-grid">Multiplayer Game</a>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <button type="button" class="btn btn-danger stretched-link d-grid" onclick="createLobby()">Create Game</button>
       </div>
     </div>
     <div class="card">
       <img src="images/multiplayer.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Join Lobby</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
         <a href="gameJoin.html" class="btn btn-danger stretched-link d-grid">Join Game</a>
       </div>
     </div>
@@ -105,11 +107,50 @@
     -->
 
   <script>
+    function createLobby() {
+      const generateCode = length => {
+        return Array(length).fill('x').join('').replace(/x/g, () => {
+          return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
+        })
+      }
+      let lobbyCode = generateCode(4);
+      console.log(lobbyCode);
+      localStorage.setItem("lobbyCode", lobbyCode);
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid)
+          var userID = user.uid;
+          var userName = db.collection("users").doc(user.name);
+          //get the document for current user.
+          currentUser.get()
+            .then(userDoc => {
+              db.collection("games").doc(lobbyCode).set({
+                code: lobbyCode,
+                status: "creating",
+                window: 15,
+                numUsers: 1,
+                users: {
+                  host: {
+                    ID: userID,
+                    name: userName,
+                    votes: 1,
+                    restaurants: 2
+                  }
+                },
+                winner: "undecided"
+              })
+            })
+        } else {
+          // No user is signed in.
+          console.log("no user signed in");
+        }
+      });
+    }
     function writeGames() {
       console.log("writing Game data");
       max = 10;
       var gamesRef = db.collection("games");
-      for (i = 1; i<= max; i++) {
+      for (i = 1; i <= max; i++) {
         gamesRef.add({
           code: "id" + i,
           status: "creating",
