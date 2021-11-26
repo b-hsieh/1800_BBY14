@@ -113,9 +113,13 @@
           return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
         })
       }
+
       let lobbyCode = generateCode(4);
+
       console.log(lobbyCode);
+
       localStorage.setItem("lobbyCode", lobbyCode);
+
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
@@ -143,13 +147,15 @@
                 winner: "undecided"
               })
             })
+
+          window.location.href = "lobby.html";
         } else {
           // No user is signed in.
           console.log("no user signed in");
         }
+
       });
 
-      window.location.href = "lobby.html"
     }
     // function writeGames() {
     //   console.log("writing Game data");

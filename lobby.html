@@ -72,9 +72,10 @@
   <div id="options">
 
   </div>
-  <h2>Timer</h2>
-  <button type="button" class="btn btn-danger" onclick="listRest()">Add Restaurant</button>
-  <a class="btn btn-danger" href="game.html" role="button" onclick="startVote()">Start Vote</a>
+  <h2>Timer <span id="timer"></span> </h2>
+  <button type="button" class="btn btn-danger" onclick="listRest(); hideList()">Add Restaurant</button>
+  <a class="btn btn-danger" href="game.html" role="button" onclick="startGame()">Start Game</a>
+  <button type="button" id="vote" class="btn btn-danger" disabled>Vote</button>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
 
@@ -102,13 +103,6 @@
     </div>
   </div>
 
-
-  <script>
-    function startVote() {
-
-    }
-  </script>
-
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -120,6 +114,8 @@
     var lobbyCode = localStorage.getItem("lobbyCode");
     console.log(lobbyCode);
     document.getElementById("codeNumber").innerHTML = lobbyCode;
+
+
 
     function displayCards(collection) {
       let CardTemplate = document.getElementById("CardTemplate");
@@ -144,12 +140,25 @@
             newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
             newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
-            newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant()`);
+            newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant(); hideList()`);
             //attach to gallery
             document.getElementById(collection + "-go-here").appendChild(newcard);
             i++;
           })
         })
+    }
+
+    function hideList() {
+      var displayState = document.getElementById('restList');
+
+      if (displayState.style.display != "block") {
+        displayState.style.display = "block";
+        document.getElementById("listOf").innerText = "Close List";
+      } else {
+        displayState.style.display = "none";
+        document.getElementById("listOf").innerText = "Add Restaurant";
+      }
+      console.log(displayState.style.display);
     }
 
     function listRest() {
@@ -195,6 +204,60 @@
       })
     }
 
+    function showTimer() {
+      db.collection("games").doc(lobbyCode)
+        .onSnapshot(lobbyCodeDoc => {
+          var time = lobbyCodeDoc.data().window;
+          console.log(time);
+          document.getElementById("timer").innerHTML = time;
+        })
+    }
+    showTimer();
+
+    function startGame() {
+      document.getElementById("vote").disabled = false;
+      document.getElementById("start").disabled = true;
+      document.getElementById("start").style.visibility = "hidden";
+      db.collection("games").doc(lobbyCode).update({
+        enableVote: true,
+        status: "inProgress"
+      })
+      for (let i = 0; i < 15; i++) {
+        setTimeout(increment, i * 1000);
+      }
+      setTimeout(
+        () => {
+          db.collection("games").doc(lobbyCode).update({
+            status: "finished"
+          })
+        },
+        15 * 1000
+      );
+    }
+    function increment() {
+      db.collection("games").doc(lobbyCode).update({
+        window: firebase.firestore.FieldValue.increment(-1)
+      })
+    }
+
+    function disableVote() {
+      db.collection("games").doc(lobbyCode)
+        .onSnapshot(lobbyCodeDoc => {
+          if (lobbyCodeDoc.data().window <= 0 || lobbyCodeDoc.data().status == "creating") {
+            document.getElementById("vote").disabled = true;
+          }
+
+          if (lobbyCodeDoc.data().status == "inProgress") {
+            document.getElementById("start").style.visibility = "hidden";
+          }
+
+          if (lobbyCodeDoc.data().status == "inProgress") {
+            document.getElementById("vote").disabled = false;
+          }
+
+        })
+    }
+    disableVote();
   </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
