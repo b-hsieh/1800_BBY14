@@ -78,7 +78,7 @@
         <h5 class="card-title">Create Lobby</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
-        <button type="button" class="btn btn-danger stretched-link d-grid" onclick="createLobby()">Create Game</button>
+        <button type="button" onclick="createLobby()" class="btn btn-danger stretched-link d-grid">Create Game</button>
       </div>
     </div>
     <div class="card">
@@ -120,9 +120,12 @@
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
           var userID = user.uid;
+
           //get the document for current user.
           currentUser.get()
             .then(userDoc => {
+              var userName = userDoc.data().name;
+              console.log(userName);
               db.collection("games").doc(lobbyCode).set({
                 code: lobbyCode,
                 status: "creating",
@@ -145,19 +148,21 @@
           console.log("no user signed in");
         }
       });
+
+      window.location.href = "lobby.html"
     }
-    function writeGames() {
-      console.log("writing Game data");
-      max = 10;
-      var gamesRef = db.collection("games");
-      for (i = 1; i <= max; i++) {
-        gamesRef.add({
-          code: "id" + i,
-          status: "creating",
-          window: 15
-        })
-      }
-    }
+    // function writeGames() {
+    //   console.log("writing Game data");
+    //   max = 10;
+    //   var gamesRef = db.collection("games");
+    //   for (i = 1; i <= max; i++) {
+    //     gamesRef.add({
+    //       code: "id" + i,
+    //       status: "creating",
+    //       window: 15
+    //     })
+    //   }
+    // }
 
   </script>
 </body>
