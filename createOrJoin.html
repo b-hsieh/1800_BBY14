@@ -119,16 +119,16 @@
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
-          var userID = user.uid;
           //get the document for current user.
           currentUser.get()
             .then(userDoc => {
+              var userName = userDoc.data().name;
+              var userID = user.uid;
               db.collection("games").doc(lobbyCode).set({
                 code: lobbyCode,
                 status: "creating",
                 enableVote: false,
                 window: 15,
-                numUsers: 1,
                 users: {
                   host: {
                     ID: userID,
@@ -138,13 +138,18 @@
                   }
                 },
                 winner: "undecided"
-              })
+              }).then(function () {
+                alert("ready to redirect")
+                window.location.replace("./lobby.html")
+              }
+
+              );
             })
         } else {
           // No user is signed in.
           console.log("no user signed in");
         }
-      });
+      })
     }
     function writeGames() {
       console.log("writing Game data");
