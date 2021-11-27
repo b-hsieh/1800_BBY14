@@ -74,7 +74,7 @@
   </div>
   <h2>Timer <span id="timer"></span> </h2>
   <button type="button" class="btn btn-danger" onclick="listRest(); hideList()">Add Restaurant</button>
-  <a class="btn btn-danger" href="game.html" role="button" onclick="startGame()">Start Game</a>
+  <button type="button" class="btn btn-danger" id="start" onclick="startGame(); increment()">Start Game</button>
   <button type="button" id="vote" class="btn btn-danger" disabled>Vote</button>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
@@ -186,17 +186,29 @@
               var code = thisRest.code;
               var details = thisRest.description;
               var currentUser = db.collection("users").doc(user.uid)
-              var userID = user.uid;
+              var currentGame = db.collection("games").doc(lobbyCode)
               var restaurant = db.collection("restaurants").doc(user.uid)
-              currentUser.get()
-                .then(userDoc => {
-                  db.collection("users").doc(userID).collection("gameList").add({
-                    name: title,
-                    code: code,
-                    description: details
-                  });
-                })
+              currentGame.collection("gameList").add({
+                gameList: {
+                  name: title,
+                  code: code,
+                  description: details
+                }
+
+              });
+              // .then(userDoc => {
+              //   // Rests = userDoc.docs;
+              //   // var thisRest = Rests[0].data();
+              //   // var title = thisRest.name;
+              //   console.log(title);
+              //   // var code = thisRest.code;
+              //   console.log(code);
+              //   // var details = thisRest.description;
+              //   console.log(details)
+
+              // })
             })
+
 
         } else {
           console.log("no user signed in");
