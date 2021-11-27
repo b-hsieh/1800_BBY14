@@ -76,7 +76,7 @@
   <button type="button" class="btn btn-danger" id="listOf" onclick="listRest(); hideList()">Add Restaurant</button>
   <button type="button" class="btn btn-danger" id="start" onclick="startGame(); increment(); gameList()">Start
     Game</button>
-  <button type="button" id="vote" class="btn btn-danger" disabled>Vote</button>
+  <button type="button" id="vote" class="btn btn-danger" disabled>Ready to Vote</button>
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
 
@@ -103,6 +103,20 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
           card's content.</p>
         <a id="voteBtn" class="btn btn-danger card-href card-vote">Vote</a>
+      </div>
+    </div>
+  </template>
+
+  <template id="CardTemplate3">
+    <div class="card py-2 mx-2">
+      <img class="card-image card-img-top" src="..." alt="...">
+      <div class="card-body">
+        <div>
+          <h3>Winner!</h3>
+        </div>
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
       </div>
     </div>
   </template>
@@ -211,7 +225,7 @@
     }
 
     function displayWinner(collection) {
-      let CardTemplate = document.getElementById("CardTemplate");
+      let CardTemplate = document.getElementById("CardTemplate3");
       db.collection(collection).doc(lobbyCode).collection('gameList')
         .get()
         .then(snap => {
@@ -230,11 +244,9 @@
             newcard.querySelector('.card-image').src = image;
 
             //give unique ids to all elements for future use
-            newcard.querySelector('.card-title').setAttribute("id", "vtitle" + i);
-            newcard.querySelector('.card-text').setAttribute("id", "vtext" + i);
-            newcard.querySelector('.card-image').setAttribute("id", "vimage" + i);
-
-            newcard.querySelector(".card-vote").setAttribute("onclick", `setData('${code}'); voteRest(); hideVoteList()`);
+            newcard.querySelector('.card-title').setAttribute("id", "winnerTitle");
+            newcard.querySelector('.card-text').setAttribute("id", "winnerText");
+            newcard.querySelector('.card-image').setAttribute("id", "winnerImage");
             //attach to gallery
             document.getElementById(collection + "-go-here").appendChild(newcard);
             i++;

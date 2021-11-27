@@ -87,7 +87,7 @@
         <h5 class="card-title">Join Lobby</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
-        <a href="gameJoin.html" class="btn btn-danger stretched-link d-grid">Join Game</a>
+        <button class="btn btn-danger stretched-link d-grid" onclick="join()">Join Game</button>
       </div>
     </div>
   </div>
@@ -150,11 +150,21 @@
 
 
         } else {
-          // No user is signed in.
+          alert("No user is signed in. Please Sign in first.")
 
         }
 
       });
+    }
+
+    function join() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          window.location.replace("./gameJoin.html");
+        } else {
+          alert("No user is signed in. Please Sign in first.")
+        }
+      })
     }
     // function writeGames() {
     //   console.log("writing Game data");
