@@ -123,7 +123,6 @@
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           var currentUser = db.collection("users").doc(user.uid)
-
           //get the document for current user.
           currentUser.get()
             .then(userDoc => {
@@ -134,7 +133,6 @@
                 status: "creating",
                 enableVote: false,
                 window: 15,
-                numUsers: 1,
                 users: {
                   host: {
                     ID: userID,

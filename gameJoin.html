@@ -103,6 +103,8 @@
                   }
                 },
               }, { merge: true });
+            }).then(function () {
+              window.location.replace("./lobby.html");
             });
         } else {
           // No user is signed in.
