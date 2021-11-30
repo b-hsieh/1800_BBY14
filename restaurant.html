@@ -94,7 +94,7 @@
                 <button type="button" class="btn btn-danger">Menu</button>
                 <button type="button" class="btn btn-danger">Reviews</button>
                 <button type="button" class="btn btn-danger" onclick="writeFave()">Favourite +</button>
-                <button type="button" class="btn btn-danger" onclick="writeGameList()">Game +</button>
+                <!-- <button type="button" class="btn btn-danger" onclick="writeGameList()">Game +</button> -->
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
@@ -174,24 +174,24 @@
             })
         }
 
-        function writeGameList() {
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    var currentUser = db.collection("users").doc(user.uid)
-                    var userID = user.uid;
-                    currentUser.get()
-                        .then(userDoc => {
-                            db.collection("users").doc(userID).collection("gameList").add({
-                                name: name,
-                                code: code,
-                                description: description
-                            });
-                        })
-                } else {
-                    console.log("no user signed in");
-                }
-            })
-        }
+        // function writeGameList() {
+        //     firebase.auth().onAuthStateChanged(user => {
+        //         if (user) {
+        //             var currentUser = db.collection("users").doc(user.uid)
+        //             var userID = user.uid;
+        //             currentUser.get()
+        //                 .then(userDoc => {
+        //                     db.collection("users").doc(userID).collection("gameList").add({
+        //                         name: name,
+        //                         code: code,
+        //                         description: description
+        //                     });
+        //                 })
+        //         } else {
+        //             console.log("no user signed in");
+        //         }
+        //     })
+        // }
     </script>
 </body>
 
