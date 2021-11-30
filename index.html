@@ -11,6 +11,16 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/my_style.css" />
 
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  
+    <!-- Link to the api keys for your firebase project -->
+    <script src="./scripts/firebaseAPI.js"></script>
+
   <title>COMP 1800 WebApp</title>
 </head>
 
@@ -81,62 +91,22 @@
     <br />
   </div>
 
-  <div class="container">
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="./images/Gourmet.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Harbour Seafood Restaurant</h5>
-            <p class="card-text">
-              Imagine having the finest dining experience with good friends overlooking
-              the Georgia Strait. Offering a picturesque setting and a world-renowned chef, Harbour Seafood
-              is a gem of Vancouver. The seafood menu selections come from the freshest daily catch and their
-              wine list is one of the most extensive on the west coast.
-            </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
+  <template id="CardTemplate">
+    <div class="card py-2 mx-2">
+      <img class="card-image card-img-top" src="..." alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
       </div>
     </div>
+  </template>
 
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Mendies</h5>
-            <p class="card-text">
-              This restaurant has it all. From grilled steaks to award-winning pastas,
-              there is something for everyone. Mendies is especially known for its wide variety of soups.
-              Every diner is guaranteed to be satisfied!
-            </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="restList" class="container">
+    <!-- Here is container for cards  -->
+    <div class="container">
+      <div id="restaurants-go-here" class="row row-cols-auto">
 
-    <div class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Sushi King</h5>
-            <p class="card-text">
-              Sushi King has the most delectable selection of sushi in the city. Their Chef's creations are
-              also well known to offer new and exciting creations to diners. The delivers a fun and creative
-              experience for all to enjoy.
-            </p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -156,6 +126,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+    <script>
+  function displayCards(collection) {
+        let CardTemplate = document.getElementById("CardTemplate");
+
+        db.collection(collection).get()
+          .then(snap => {
+            var i = 1;
+            snap.forEach(doc => {    //iterate thru each doc
+              var title = doc.data().name;
+              var details = doc.data().description;
+              var image = doc.data().image;
+              var code = doc.data().code;
+              let newcard = CardTemplate.content.cloneNode(true);
+
+              //update title and text and image
+              newcard.querySelector('.card-title').innerHTML = title;
+              newcard.querySelector('.card-text').innerHTML = details;
+              newcard.querySelector('.card-image').src = image;
+
+              //give unique ids to all elements for future use
+              newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+              newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+              newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
+              
+              //attach to gallery
+              document.getElementById(collection + "-go-here").appendChild(newcard);
+              i++;
+            })
+          })
+      }
+    displayCards("restaurants");
+    </script>
+
 </body>
 
 </html>
