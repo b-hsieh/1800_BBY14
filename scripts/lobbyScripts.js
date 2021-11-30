@@ -11,31 +11,31 @@ function displayCards(collection) {
   if (!restarauntsDisplayed) {
     restarauntsDisplayed = true;
     db.collection(collection).get()
-    .then(snap => {
-      var i = 1;
-      snap.forEach(doc => {    //iterate thru each doc
-        var title = doc.data().name;
-        var details = doc.data().description;
-        var image = doc.data().image;
-        var code = doc.data().code;
-        let newcard = CardTemplate.content.cloneNode(true);
+      .then(snap => {
+        var i = 1;
+        snap.forEach(doc => {    //iterate thru each doc
+          var title = doc.data().name;
+          var details = doc.data().description;
+          var image = doc.data().image;
+          var code = doc.data().code;
+          let newcard = CardTemplate.content.cloneNode(true);
 
-        //update title and text and image
-        newcard.querySelector('.card-title').innerHTML = title;
-        newcard.querySelector('.card-text').innerHTML = details;
-        newcard.querySelector('.card-image').src = image;
+          //update title and text and image
+          newcard.querySelector('.card-title').innerHTML = title;
+          newcard.querySelector('.card-text').innerHTML = details;
+          newcard.querySelector('.card-image').src = image;
 
-        //give unique ids to all elements for future use
-        newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-        newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-        newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+          //give unique ids to all elements for future use
+          newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+          newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
+          newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
 
-        newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant(); hideList()`);
-        //attach to gallery
-        document.getElementById(collection + "-go-here").appendChild(newcard);
-        i++;
+          newcard.querySelector(".card-add").setAttribute("onclick", `setData('${code}'); addRestaurant(); hideList()`);
+          //attach to gallery
+          document.getElementById(collection + "-go-here").appendChild(newcard);
+          i++;
+        })
       })
-    })
   }
 }
 
@@ -94,34 +94,38 @@ function displayWinner(collection) {
         }
 
       })
-    })
-  let resID = localStorage.getItem("code");
-  db.collection("games").doc(lobbyCode).collection('gameList').where("code", "==", resID)
-    .get()
-    .then(queryRest => {
-      Rests = queryRest.docs;
-      var thisRest = Rests[0].data();
-      // console.log(thisRest);
-      var title = thisRest.name;
-      // console.log(title);
-      var code = thisRest.code;
-      var details = thisRest.description;
-      var image = thisRest.image;
-      let newcard = CardTemplate.content.cloneNode(true);
-      //update title and text and image
-      newcard.querySelector('.card-title').innerHTML = title;
-      newcard.querySelector('.card-text').innerHTML = details;
-      newcard.querySelector('.card-image').src = image;
+    }).then(function () {
+      let resID = localStorage.getItem("code");
+      db.collection("games").doc(lobbyCode).collection('gameList').where("code", "==", resID)
+        .get()
+        .then(queryRest => {
+          Rests = queryRest.docs;
+          var thisRest = Rests[0].data();
+          console.log(thisRest);
+          var title = thisRest.name;
+          console.log(title);
+          var code = thisRest.code;
+          var details = thisRest.description;
+          var image = thisRest.image;
+          let newcard = CardTemplate.content.cloneNode(true);
+          //update title and text and image
+          newcard.querySelector('.card-title').innerHTML = title;
+          newcard.querySelector('.card-text').innerHTML = details;
+          newcard.querySelector('.card-image').src = image;
 
-      //give unique ids to all elements for future use
-      newcard.querySelector('.card-title').setAttribute("id", "winnerTitle");
-      newcard.querySelector('.card-text').setAttribute("id", "winnerText");
-      newcard.querySelector('.card-image').setAttribute("id", "winnerImage");
+          //give unique ids to all elements for future use
+          newcard.querySelector('.card-title').setAttribute("id", "winnerTitle");
+          newcard.querySelector('.card-text').setAttribute("id", "winnerText");
+          newcard.querySelector('.card-image').setAttribute("id", "winnerImage");
 
-      //attach to gallery
-      document.getElementById(collection + "-go-here").appendChild(newcard);
-      i++;
-    })
+          //attach to gallery
+          document.getElementById(collection + "-go-here").appendChild(newcard);
+          // i++;
+        })
+    }
+
+    )
+
 }
 
 
@@ -134,6 +138,10 @@ function gameList() {
   displayGameList("games");
 }
 
+var winCounter = 0;
+function winner() {
+  displayWinner("games");
+}
 
 
 function hideList() {
@@ -171,6 +179,7 @@ function setCount(count) {
 function addRestaurant() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
+      document.getElementById("listOf").disabled = true;
       let resID = localStorage.getItem("code");
       db.collection("restaurants").where("code", "==", resID)
         .get()
@@ -258,24 +267,28 @@ function increment() {
 }
 
 function disableVote() {
+  var displayVotes = 0;
   db.collection("games").doc(lobbyCode)
     .onSnapshot(lobbyCodeDoc => {
       if (lobbyCodeDoc.data().window <= 0 || lobbyCodeDoc.data().status == "creating") {
         document.getElementById("vote").disabled = true;
       }
 
-      if (lobbyCodeDoc.data().status == "inProgress") {
+      if (lobbyCodeDoc.data().status == "inProgress" && displayVotes == 0) {
         document.getElementById("start").style.visibility = "hidden";
+        gameList();
       }
 
-      if (lobbyCodeDoc.data().status == "inProgress") {
+      if (lobbyCodeDoc.data().status == "inProgress" && displayVotes == 0) {
         document.getElementById("vote").disabled = false;
-        document.getElementById("vote").innerHTML = "vote in progress..."
+        document.getElementById("vote").innerHTML = "Vote in Progress..."
+        displayVotes++;
       }
 
       if (lobbyCodeDoc.data().status == "finished") {
-        document.getElementById("vote").innerHTML = "vote completed"
-        displayWinner("games");
+        document.getElementById("vote").innerHTML = "Vote Completed"
+        winner();
+        winCounter++;
       }
 
     })

@@ -61,5 +61,10 @@
 }
 
 #buttons {
-  justify-content: center;
+  margin: 5%;
 }
+#buttons > .btn {
+  width: 24%;
+  margin: auto;
+}
+

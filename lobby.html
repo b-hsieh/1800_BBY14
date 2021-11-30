@@ -47,10 +47,6 @@
           </li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
-        </form>
-
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
             data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,12 +75,13 @@
 
   <div id="buttons">
     <button type="button" class="btn btn-danger" id="listOf" onclick="listRest(); hideList()">Add Restaurant</button>
-    <button type="button" class="btn btn-danger" id="start" onclick="startGame(); increment(); gameList()">Start
+    <button type="button" class="btn btn-danger" id="start" onclick="startGame(); increment();">Start
       Game</button>
     <button type="button" id="vote" class="btn btn-danger" disabled>Ready to Vote</button>
-    <a id="quitBtn" href="main.html" class="btn btn-danger card-href card-quit">Quit the game</a>
+    <a id="quitBtn" href="main.html" class="btn btn-danger card-href card-quit">Quit the Game</a>
   </div>
 
+  <div id="winner"></div>
 
   <!-- <button type="button" id="startButton" class="btn btn-danger" onclick="startVote()">Start
     Vote</button> -->
