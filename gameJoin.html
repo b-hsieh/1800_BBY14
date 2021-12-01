@@ -63,6 +63,7 @@
   <script>
     function joinLobby() {
       let lobbyCode = document.getElementById("lobbyCode").value;
+      localStorage.setItem("lobbyCode", lobbyCode);
       db.collection("games").doc(lobbyCode)
         .get().then(
           doc => {

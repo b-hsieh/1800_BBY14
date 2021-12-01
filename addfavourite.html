@@ -21,7 +21,7 @@
 
   <!-- Link to the api keys for your firebase project -->
   <script src="./scripts/firebaseAPI.js"></script>
-
+  
 
   <title>COMP 1800 WebApp</title>
 </head>
@@ -54,16 +54,6 @@
   <div class="container">
     <h1>Add Favorite</h1>
     <form>
-<<<<<<< HEAD
-      <fieldset class="mb-3" id="personalInfoFields" disabled>
-        <div class="form-group">
-          <label>Restaurant Name</label>
-          <input type="text" id="nameInput" class="form-control" placeholder="Enter restaurant name">
-        </div>
-        <div class="form-group">
-          <label>Restaurant Location</label>
-          <input type="text" id="locationInput" class="form-control" placeholder="Enter restaurant location">
-=======
         <fieldset class="mb-3" id="personalInfoFields" disabled>
             <div class="form-group">
                 <label>Restaurant Name</label>
@@ -77,17 +67,10 @@
         <div class="d-flex justify-content-end mt-5">
             <button type="button" class="btn btn-secondary" onclick="editFavouriteInfo()">Edit</button>
             <span style="width: 10px"></span>
-            <button type="button" class="btn btn-danger" onclick="saveFavouriteInfo()">Save</button>
->>>>>>> 524e36a2f14a0afdb7fcc7fd359a8e97889cc336
+            <button type="button" class="btn btn-info" onclick="saveFavouriteInfo()">Save</button>
         </div>
-      </fieldset>
-      <div class="d-flex justify-content-end mt-5">
-        <button type="button" class="btn btn-secondary" onclick="editFavouriteInfo()">Edit</button>
-        <span style="width: 10px"></span>
-        <button type="button" class="btn btn-info" onclick="saveFavouriteInfo()">Save</button>
-      </div>
     </form>
-  </div>
+</div>
 
 
 
@@ -99,34 +82,29 @@
     crossorigin="anonymous"></script>
 
   <script>
-    if (user) {
-      document.getElementById("loginStat").innerHTML = "Sign Out"
-    } else {
-      document.getElementById("loginStat").innerHTML = "Sign In"
-    }
     function addFavourite() {
       let Restaurant = document.getElementById("restaurants").value;
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          var currentUser = db.collection("users").doc(user.uid);
-          var userID = user.uid;
-          currentUser.get()
-            .then(userDoc => {
-              //get user Email
-              var userEmail = userDoc.data().email;
-              // Start a new collection and add all data in it.
-              db.collection("Favorites").add({
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        var currentUser = db.collection("users").doc(user.uid);
+        var userID = user.uid;
+        currentUser.get()
+          .then(userDoc => {
+            //get user Email
+            var userEmail = userDoc.data().email;
+            // Start a new collection and add all data in it.
+            db.collection("Favorites").add({
                 Restaurant: restName
 
-              });
-            })
+            });
+          })
 
-        } else {
+          } else {
           // No user is signed in.
           console.log("no user signed in");
-        }
-      });
-    }
+          }
+    });
+  }
   </script>
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
