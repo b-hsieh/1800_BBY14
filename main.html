@@ -26,59 +26,35 @@
 
 <body>
   <header id="topnav">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="main.html" class="nav-link px-2 link-light">
-              <img src="images/home.png" alt="Home" width="32" height="32"><img>
-              Home
-            </a>
-          </li>
-          <li><a href="favourites.html" class="nav-link px-2 link-light">
-              <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
-              Favourites
-            </a>
-          </li>
-          <li>
-            <a href="friends.html" class="nav-link px-2 link-light">
-              <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
-              Friends
-            </a>
-          </li>
-        </ul>
-
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
-            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a id="loginStat" class="dropdown-item" href="login.html">Sign in</a></li>
-          </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./main.html">
+          <img src="./images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          Restaurant Royale
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
+            <a class="nav-link active" href="./favourites.html">Favourites</a>
+            <a class="nav-link active" href="./friends.html">Friends</a>
+            <a class="nav-link active" id="loginStat" href="./login.html">Login</a>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
 
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <div class="overflow-hidden" style="max-height: 30vh;">
-      <div class="container px-5">
-        <img src="./images/podium.png" class="img-fluid" alt="Bracket" width="700"
-          height="500" loading="lazy">
-      </div>
-    </div>
-    <br /><br />
-    <h1 class="display-4 fw-bold">Ready to Play?</h1>
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4 img-fluid" src="./images/podium.png" alt="" width="auto" height="auto">
+    <h1 class="display-5 fw-bold">Ready to Play?</h1>
     <div class="col-lg-6 mx-auto">
-      <br /><br />
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <a class="btn btn-danger" href="createOrJoin.html" role="button">Create or Join a Game!</a>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a class="btn btn-danger" href="createOrJoin.html" role="button">Create or Join a Game!</a>      
       </div>
     </div>
   </div>
@@ -100,12 +76,12 @@
 
 
 
-  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div>
     <div class="col">
       <div class="container">
         <h1>How about this?</h1>
         <div class="container">
-          <div id="restaurants-go-here" class="row row-cols-auto">
+          <div id="restaurants-go-here">
 
           </div>
         </div>

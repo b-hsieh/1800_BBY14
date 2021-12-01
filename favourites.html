@@ -26,51 +26,27 @@
 
 <body>
 
-  <!--Navbar-->
   <header id="topnav">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="main.html" class="nav-link px-2 link-light">
-              <img src="images/home.png" alt="Home" width="32" height="32"><img>
-              Home
-            </a>
-          </li>
-          <li><a href="favourites.html" class="nav-link px-2 link-light">
-              <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
-              Favourites
-            </a>
-          </li>
-          <li>
-            <a href="friends.html" class="nav-link px-2 link-light">
-              <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
-              Friends
-            </a>
-          </li>
-        </ul>
-
-        <!--Search Bar-->
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
-        </form>
-
-        <!--Profile Settings Dropdown-->
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="settings.html">Settings</a></li>
-            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="login.html">Sign out</a></li>
-          </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./main.html">
+          <img src="./images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          Restaurant Royale
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
+            <a class="nav-link active" href="./favourites.html">Favourites</a>
+            <a class="nav-link active" href="./friends.html">Friends</a>
+            <a class="nav-link active" id="loginStat" href="./login.html">Login</a>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
   <!--Content-->
@@ -113,203 +89,134 @@
 
 
     <div id="favCard2" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-
-
-      <div id="favCard2" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Mendies</h5>
-              <p class="card-text">
-                This restaurant has it all. From grilled steaks to award-winning pastas,
-                there is something for everyone. Mendies is especially known for its wide variety of soups.
-                Every diner is guaranteed to be satisfied!
-              </p>
-              <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
-            </div>
+      <div class="row">
+        <div class="col">
+          <img src="./images/Restaurant.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col">
+          <div class="card-body">
+            <h5 class="card-title">Mendies</h5>
+            <p class="card-text">
+              This restaurant has it all. From grilled steaks to award-winning pastas,
+              there is something for everyone. Mendies is especially known for its wide variety of soups.
+              Every diner is guaranteed to be satisfied!
+            </p>
           </div>
         </div>
-
-
-
-        <!--div id="favCard3" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-
-
-  <div id="favCard3" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Sushi King</h5>
-          <p class="card-text">
-            Sushi King has the most delectable selection of sushi in the city. Their Chef's creations are
-            also well known to offer new and exciting creations to diners. The delivers a fun and creative
-            experience for all to enjoy.
-          </p>
-          <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
       </div>
     </div>
-  </div>
-  </div>
-  </div>
-  <div id="favCard4" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="./images/burger3.jpg" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Mr. Burger</h5>
-          <p class="card-text">
-            Imagine having the finest dining experience with good friends overlooking
-            the Georgia Strait. Offering a picturesque setting and a world-renowned chef, Harbour Seafood
-            is a gem of Vancouver. The seafood menu selections come from the freshest daily catch and their
-            wine list is one of the most extensive on the west coast.
-          </p>
-          <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
 
 
-  <div id="favCard6" class="card mb-3" style="max-width: 100vw; margin-top: 20px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="./images/sushi.jpg" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Sushi King</h5>
-          <p class="card-text">
-            Sushi King has the most delectable selection of sushi in the city. Their Chef's creations are
-            also well known to offer new and exciting creations to diners. The delivers a fun and creative
-            experience for all to enjoy.
-          </p>
-          <!--p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p-->
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+    <script src="scripts/firebaseAPI.js"></script>
 
 
-  <!-- Optional JavaScript; choose one of the two! -->
+    <script>
 
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="scripts/firebaseAPI.js"></script>
-
-
-  <script>
-
-    /* function displayFavourite() {
-       db.collection("favourites").get()
-             .then(allRestaurants => {
-               allRestaurants.forEach(doc => {
-                 var restName = doc.data().name;
-                 console.log(restName);
-                 document.getElementById(restName).innerText = name;
+      /* function displayFavourite() {
+         db.collection("favourites").get()
+               .then(allRestaurants => {
+                 allRestaurants.forEach(doc => {
+                   var restName = doc.data().name;
+                   console.log(restName);
+                   document.getElementById(restName).innerText = name;
+                 })
                })
-             })
-       }
-       displayFavourite();*/
+         }
+         displayFavourite();*/
 
-    function writeRest() {
-      //define a variable for the collection you want to create in Firestore to populate data
-      var restRef = db.collection("restaurants");
+      function writeRest() {
+        //define a variable for the collection you want to create in Firestore to populate data
+        var restRef = db.collection("restaurants");
 
-      restRef.add({
-        code: "ELT",
-        description: "Fantastic food, service, friendly staff and reasonable prices, make this the best place to eat!! Did I mention the food?!!? You don’t usually get what you pay for. At this great place, you definitely do!!",
-        location: "bby",
-        name: "El Loco Taco"
-      });
-      restRef.add({
-        code: "LPH",
-        description: "The finest ingredients are brought together with love and care, then slow cooked to perfection. Yes, the old ways are still best at Los Pollos Hermanos. But don't take my word for it. One taste, and you'll know.",
-        location: "bby",
-        name: "Los Pollos Hermanos"
-      });
-      restRef.add({
-        code: "NOK",
-        description: "Casual, modern locale with bar & al fresco seating, furnishing pizza, housemade pasta & drinks.",
-        location: "van",
-        name: "Nook"
-      });
-      restRef.add({
-        code: "PHC",
-        description: "Relaxed spot for noodle soups & other Vietnamese comfort foods in a contemporary atmosphere.",
-        location: "bby",
-        name: "Pho Century"
-      });
-      restRef.add({
-        code: "TEN",
-        description: "Eastern European specialties are presented in a cozy antiques-filled room with a back patio.",
-        location: "bby",
-        name: "Tenen Restaurant"
-      });
-      restRef.add({
-        code: "NAR",
-        description: "Fusion style Korean food with flavorful sauces and good to share plates.",
-        location: "bby",
-        name: "Na-Re Korean Kitchen"
-      });
-      restRef.add({
-        code: "MDS",
-        description: "Low-key eatery offering familiar Indian dishes & vegetarian fare plus dosas in a modest setup.",
-        location: "van",
-        name: "Medras Spice"
-      });
-      restRef.add({
-        code: "NBN",
-        description: "Relaxed cafe offering Taiwanese fare & a dim sum menu, plus teas & smoothies, with delivery.",
-        location: "bby",
-        name: "No. 1 Beef Noodle"
-      });
-    }
+        restRef.add({
+          code: "ELT",
+          description: "Fantastic food, service, friendly staff and reasonable prices, make this the best place to eat!! Did I mention the food?!!? You don’t usually get what you pay for. At this great place, you definitely do!!",
+          location: "bby",
+          name: "El Loco Taco"
+        });
+        restRef.add({
+          code: "LPH",
+          description: "The finest ingredients are brought together with love and care, then slow cooked to perfection. Yes, the old ways are still best at Los Pollos Hermanos. But don't take my word for it. One taste, and you'll know.",
+          location: "bby",
+          name: "Los Pollos Hermanos"
+        });
+        restRef.add({
+          code: "NOK",
+          description: "Casual, modern locale with bar & al fresco seating, furnishing pizza, housemade pasta & drinks.",
+          location: "van",
+          name: "Nook"
+        });
+        restRef.add({
+          code: "PHC",
+          description: "Relaxed spot for noodle soups & other Vietnamese comfort foods in a contemporary atmosphere.",
+          location: "bby",
+          name: "Pho Century"
+        });
+        restRef.add({
+          code: "TEN",
+          description: "Eastern European specialties are presented in a cozy antiques-filled room with a back patio.",
+          location: "bby",
+          name: "Tenen Restaurant"
+        });
+        restRef.add({
+          code: "NAR",
+          description: "Fusion style Korean food with flavorful sauces and good to share plates.",
+          location: "bby",
+          name: "Na-Re Korean Kitchen"
+        });
+        restRef.add({
+          code: "MDS",
+          description: "Low-key eatery offering familiar Indian dishes & vegetarian fare plus dosas in a modest setup.",
+          location: "van",
+          name: "Medras Spice"
+        });
+        restRef.add({
+          code: "NBN",
+          description: "Relaxed cafe offering Taiwanese fare & a dim sum menu, plus teas & smoothies, with delivery.",
+          location: "bby",
+          name: "No. 1 Beef Noodle"
+        });
+      }
 
 
-    function displayFavRests() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          var currentUser = db.collection("users").doc(user.uid)
-          var userID = user.uid;
-          currentUser.collection("favourites").get()
-            .then(allRests => {
-              allRests.forEach(doc => {
-                var restName = doc.data().name; //gets the name field
-                var restID = doc.data().code; //gets the unique ID field
-                console.log(restID);
-                document.getElementById(restID).innerText = restName;
+      function displayFavRests() {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            var currentUser = db.collection("users").doc(user.uid)
+            var userID = user.uid;
+            currentUser.collection("favourites").get()
+              .then(allRests => {
+                allRests.forEach(doc => {
+                  var restName = doc.data().name; //gets the name field
+                  var restID = doc.data().code; //gets the unique ID field
+                  console.log(restID);
+                  document.getElementById(restID).innerText = restName;
+                })
+
               })
-
-            })
-        } else {
-          console.log("no user signed in");
-        }
-      })
-    }
-    displayFavRests();
+          } else {
+            console.log("no user signed in");
+          }
+        })
+      }
+      displayFavRests();
 
 
-  </script>
+    </script>
 
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-
+</div>
 </body>
 
 </html>
