@@ -138,7 +138,6 @@ function gameList() {
   displayGameList("games");
 }
 
-var winCounter = 0;
 function winner() {
   displayWinner("games");
 }
@@ -160,7 +159,7 @@ function hideList() {
 function hideVoteList() {
   var displayState = document.getElementById('voteList');
   if (displayState.style.display != "block") {
-    displayState.style.visibility = "hidden";
+    displayState.style.display = "none";
   } else {
     displayState.style.display = "none";
   }
@@ -275,7 +274,8 @@ function disableVote() {
       }
 
       if (lobbyCodeDoc.data().status == "inProgress" && displayVotes == 0) {
-        document.getElementById("start").style.visibility = "hidden";
+        document.getElementById("start").disabled = true;
+        document.getElementById("start").innerHTML = "Game Started"
         gameList();
       }
 
@@ -286,9 +286,11 @@ function disableVote() {
       }
 
       if (lobbyCodeDoc.data().status == "finished") {
+        document.getElementById("listOf").disabled = true
+        document.getElementById("start").disabled = true
+        document.getElementById("start").innerHTML = "Game Finished"
         document.getElementById("vote").innerHTML = "Vote Completed"
         winner();
-        winCounter++;
       }
 
     })
