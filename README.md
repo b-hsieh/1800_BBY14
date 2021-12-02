@@ -8,7 +8,8 @@
 * [Acknowledgements](#acknoledgements)
 
 ## General Info
-This browser based web application to ...
+This browser based web application to help people decide where to eat. Users can join or create a lobby and add restaurants to a list. When the game starts a timer counts down and users must vote for where they want to eat.
+
 * Hi my name is Ryan.  This is my edit to this file.
 * Hi my name is Brian
 * Hi my name is Jason. I'm excited about this project beacuse...
@@ -33,6 +34,7 @@ It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
     /blah.jpg                # 
+    /beef_noodle.jpg         #
 ├── scripts                  # Folder for scripts
     /firebase_api.js         # Firebase api, shared across pages
     /lobbyScripts.js         # Scripts for lobby function e.g. start game
