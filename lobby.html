@@ -247,6 +247,11 @@
               setCount(count);
               setData(code);
             }
+            // else if (count = voteCount) {
+            //   localStorage.setItem("count" + i, count);
+            //   localStorage.setItem("code" + i, code);
+            //   i++;
+            // }
 
           })
         })
@@ -254,6 +259,7 @@
       db.collection("games").doc(lobbyCode).collection('gameList').where("code", "==", resID)
         .get()
         .then(queryRest => {
+          var i = 1;
           Rests = queryRest.docs;
           var thisRest = Rests[0].data();
           // console.log(thisRest);
@@ -277,6 +283,8 @@
           document.getElementById(collection + "-go-here").appendChild(newcard);
           i++;
         })
+
+
     }
 
 
@@ -379,6 +387,7 @@
           document.getElementById("timer").innerHTML = time;
           if (time < 0) {
             document.getElementById("timer").innerHTML = "Time Over";
+
           }
         })
     }
@@ -416,6 +425,7 @@
         .onSnapshot(lobbyCodeDoc => {
           if (lobbyCodeDoc.data().window <= 0 || lobbyCodeDoc.data().status == "creating") {
             document.getElementById("vote").disabled = true;
+
           }
 
           if (lobbyCodeDoc.data().status == "inProgress") {
@@ -428,13 +438,15 @@
           }
 
           if (lobbyCodeDoc.data().status == "finished") {
-            document.getElementById("vote").innerHTML = "vote completed"
             displayWinner("games");
+            document.getElementById("vote").innerHTML = "vote completed"
           }
 
         })
     }
     disableVote();
+
+
   </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
