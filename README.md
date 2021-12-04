@@ -48,6 +48,7 @@ It has the following subfolders and files:
 ├── images                   # Folder for images
     /blah.jpg                #
     /beef_noodle.jpg         #
+├── IncompeletedFeatures     # Folder for html, css, and scripts for incompeleted features
 ├── scripts                  # Folder for scripts
     /firebase_api.js         # Firebase api, shared across pages
     /lobbyScripts.js         # Scripts for lobby function e.g. start game
@@ -59,9 +60,17 @@ It has the following subfolders and files:
     /lobby.css               #Style for lobby.html
     /main.css                #Style for main.css
     /restaurant.css          #Style for restaurant.html
+    /mystyle.css             #Style for general pages such as index.html, gameJoin.html, login.html
 
 Firebase hosting files:
-├── .firebaserc...
+├── .firebase
+	/hosting..cache
+├── .firebaserc
+├── 404.html
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+├── storage.rules
 
 
 ```
@@ -71,5 +80,6 @@ Firebase hosting files:
 ## Contact
 
 - Brian Hsieh - bhsieh7@my.bcit.ca
+- Jason Yoo - jyoo36@my.bcit.ca
 
 ## Acknowledgements
