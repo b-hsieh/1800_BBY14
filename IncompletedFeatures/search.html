@@ -14,54 +14,33 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
     <!-- Optional styles and scripts of your own -->
-    <link type="text/css" rel="stylesheet" href="styles/serach.css">
+    <link type="text/css" rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="./styles/bootstrapColourReplace.css">
 </head>
 
 <body>
     <header id="topnav">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="main.html" class="nav-link px-2 link-light">
-                            <img src="images/home.png" alt="Home" width="32" height="32"><img>
-                            Home
-                        </a>
-                    </li>
-                    <li><a href="favourites.html" class="nav-link px-2 link-light">
-                            <img src="images/favourites.png" alt="Favourites" width="32" height="32"><img>
-                            Favourites
-                        </a>
-                    </li>
-                    <li>
-                        <a href="friends.html" class="nav-link px-2 link-light">
-                            <img src="images/friends.png" alt="Friends" width="32" height="32"><img>
-                            Friends
-                        </a>
-                    </li>
-                </ul>
-
-                <!--Search Bar-->
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control" placeholder="Search Restaurants..." aria-label="Search">
-                </form>
-
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="images/blankprofile.png" alt="Profile" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="settings.html">Settings</a></li>
-                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="login.html">Sign out</a></li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="./main.html">
+              <img src="./images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              Restaurant Royale
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
+                <a class="nav-link active" href="./favourites.html">Favourites</a>
+                <a class="nav-link active" href="./friends.html">Friends</a>
+                <a class="nav-link active" id="loginStat" href="./login.html">Login</a>
+              </div>
             </div>
-        </div>
-    </header>
+          </div>
+        </nav>
+      </header>
 
 
     <!-- welcome and main part of the page -->

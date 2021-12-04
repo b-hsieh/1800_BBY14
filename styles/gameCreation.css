@@ -1,0 +1,10 @@
+#topnav {
+  background-color: firebrick;
+  margin: 0;
+  border: 0;
+}
+
+#gameCreation {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
