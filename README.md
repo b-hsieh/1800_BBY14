@@ -75,10 +75,10 @@ It has the following subfolders and files:
     /taco.jpg                #
     /tenen.jpg               #
 ├── IncompletedFeatures     # Folder for html, css, and scripts for incompleted features
-├── addfavourite.html        # add favourite HTML file, the landing page after click the add favourite button on favourites.html
-├── addfriend.html           # add friend HTML file, the landing page after click the add friend button on friends.html
-├── favourites.html          # favourites HTML file, the landing page after click the favourites on the nav bar
-├── friends.html             # friends HTML file, the landing page after click the friends on the nav bar
+  ├── addfavourite.html        # add favourite HTML file, the landing page after click the add favourite button on favourites.html
+  ├── addfriend.html           # add friend HTML file, the landing page after click the add friend button on friends.html
+  ├── favourites.html          # favourites HTML file, the landing page after click the favourites on the nav bar
+  ├── friends.html             # friends HTML file, the landing page after click the friends on the nav bar
 ├── scripts                  # Folder for scripts
     /firebase_api.js         # Firebase api, shared across pages
     /lobbyScripts.js         # Scripts for lobby function e.g. start game
