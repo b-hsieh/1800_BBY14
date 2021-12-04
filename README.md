@@ -37,18 +37,48 @@ Content of the project folder:
 ├── createOrJoin.html        # choosing create or join the game HTML file, the landing page after click create or join a game button
 ├── lobby.html               # lobby HTML file, the landing page after click the create game button or submit the lobby code
 ├── gameJoin.html            # gameJoin HTML file, the landing page after clicke the join game button
-├── addfavourite.html        # add favourite HTML file, the landing page after click the add favourite button on favourites.html
-├── addfriend.html           # add friend HTML file, the landing page after click the add friend button on friends.html
-├── favourites.html          # favourites HTML file, the landing page after click the favourites on the nav bar
-├── friends.html             # friends HTML file, the landing page after click the friends on the nav bar
 └── README.md
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                #
     /beef_noodle.jpg         #
-├── IncompeletedFeatures     # Folder for html, css, and scripts for incompeleted features
+    /burger.jpg              #
+    /burger2.jpg             #
+    /burger3.jpg             #
+    /createLobby.jpg         #
+    /elloco.jpg              #
+    /friendseating.jpg       #
+    /Girl1.jpg               #
+    /Girl2.jpg               #
+    /Gourmet.jpg             #
+    /GroupRestaurant.jpg     #
+    /Guy1.jpg                #
+    /Guy2.jpg                #
+    /joinLobby.png           #
+    /koreanFriedChicken.jpg  #
+    /logo.png                #
+    /losPollos.jpg           #
+    /madras.jpg              #
+    /nare.jpg                #
+    /nook.jpg                #
+    /pho.jpg                 #
+    /phocentury.jpg          #
+    /pizza&pasta.jpg         #
+    /podium.png              #
+    /pollos.jpg              #
+    /ramen.jpg               #
+    /Restaurant.jpg          #
+    /seafood.jpg             #
+    /soup.jpg                #
+    /sushi.jpg               #
+    /taco.jpg                #
+    /tenen.jpg               #
+├── IncompletedFeatures     # Folder for html, css, and scripts for incompleted features
+├── addfavourite.html        # add favourite HTML file, the landing page after click the add favourite button on favourites.html
+├── addfriend.html           # add friend HTML file, the landing page after click the add friend button on friends.html
+├── favourites.html          # favourites HTML file, the landing page after click the favourites on the nav bar
+├── friends.html             # friends HTML file, the landing page after click the friends on the nav bar
 ├── scripts                  # Folder for scripts
     /firebase_api.js         # Firebase api, shared across pages
     /lobbyScripts.js         # Scripts for lobby function e.g. start game
@@ -77,6 +107,10 @@ Firebase hosting files:
 
 ## Resources
 
+- Google Icons https://fonts.google.com/icons
+- Custom Logo and join and create lobby images by Brian using parts of Google Icons
+- Images from Pexels https://www.pexels.com/
+
 ## Contact
 
 - Brian Hsieh - bhsieh7@my.bcit.ca
@@ -84,3 +118,5 @@ Firebase hosting files:
 - Jason Yoo - jyoo36@my.bcit.ca
 
 ## Acknowledgements
+
+- Thanks to our COMP 1800 Instructors Carly and Hoda for helping us learn how to develop our own application.
