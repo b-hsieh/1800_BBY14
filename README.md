@@ -80,6 +80,7 @@ Firebase hosting files:
 ## Contact
 
 - Brian Hsieh - bhsieh7@my.bcit.ca
+- Ryan Toews - rtoews11@my.bcit.ca
 - Jason Yoo - jyoo36@my.bcit.ca
 
 ## Acknowledgements
