@@ -4,7 +4,10 @@ console.log(lobbyCode);
 document.getElementById("codeNumber").innerHTML = lobbyCode;
 var restarauntsDisplayed = false;
 
-
+/**
+ * Displays all the possible restaurants that can be added to the game list.
+ * @param {Restaurants} collection collection that corresponds to the restaurant list
+ */
 function displayCards(collection) {
   let CardTemplate = document.getElementById("CardTemplate");
 
@@ -39,6 +42,10 @@ function displayCards(collection) {
   }
 }
 
+/**
+ * Displays the games list, all the restaurants that can be voted on.
+ * @param {gamesList} collection gameslist collection that people can vote for
+ */
 function displayGameList(collection) {
   let CardTemplate = document.getElementById("CardTemplate2");
   db.collection(collection).doc(lobbyCode).collection('gameList')
@@ -71,6 +78,10 @@ function displayGameList(collection) {
     })
 }
 
+/**
+ * Displays the winner of the game by iterating through the games list and counting the votes for each restaurant.
+ * @param {gamesList} collection gamesList collection
+ */
 function displayWinner(collection) {
 
   let CardTemplate = document.getElementById("CardTemplate3");
@@ -129,20 +140,30 @@ function displayWinner(collection) {
 }
 
 
-
+/**
+ * Displays the restaurant cards.
+ */
 function listRest() {
   displayCards("restaurants");
 }
 
+/**
+ * Displays the voting cards.
+ */
 function gameList() {
   displayGameList("games");
 }
 
+/**
+ * Displays the winner.
+ */
 function winner() {
   displayWinner("games");
 }
 
-
+/**
+ * Hides the restaurant list if the user does not want to add a restaurant or just wants to hide the list.
+ */
 function hideList() {
 
   var displayState = document.getElementById('restList');
@@ -156,6 +177,9 @@ function hideList() {
   }
 }
 
+/**
+ * Hides the vote list.
+ */
 function hideVoteList() {
   var displayState = document.getElementById('voteList');
   if (displayState.style.display != "block") {
@@ -166,15 +190,25 @@ function hideVoteList() {
 }
 
 
-
+/**
+ * Sets restaurant code in local storage.
+ * @param {} id 
+ */
 function setData(id) {
   localStorage.setItem('code', id);
 }
 
+/**
+ * Sets count in local storage.
+ * @param {} count 
+ */
 function setCount(count) {
   localStorage.setItem('count', count);
 }
 
+/**
+ * Adds a restaurant to the gamesList collection.
+ */
 function addRestaurant() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -212,6 +246,9 @@ function addRestaurant() {
   })
 }
 
+/**
+ * Vote for a restaurant, increases the vote count by 1.
+ */
 function voteRest() {
   let resID = localStorage.getItem("code");
 
@@ -225,6 +262,9 @@ function voteRest() {
 
 }
 
+/**
+ * Shows the current time left to vote on the page.
+ */
 function showTimer() {
   db.collection("games").doc(lobbyCode)
     .onSnapshot(lobbyCodeDoc => {
@@ -238,6 +278,9 @@ function showTimer() {
 }
 showTimer();
 
+/**
+ * Starts the game. Increments the timer.
+ */
 function startGame() {
   document.getElementById("vote").disabled = false;
   document.getElementById("start").disabled = true;
@@ -259,12 +302,18 @@ function startGame() {
   );
 }
 
+/**
+ * Decreases the timer.
+ */
 function increment() {
   db.collection("games").doc(lobbyCode).update({
     window: firebase.firestore.FieldValue.increment(-1)
   })
 }
 
+/**
+ * Disables the vote once the timer hits zero, also controls the state of the other buttons.
+ */
 function disableVote() {
   var displayVotes = 0;
   db.collection("games").doc(lobbyCode)

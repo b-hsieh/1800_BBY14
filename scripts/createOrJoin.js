@@ -1,3 +1,6 @@
+/**
+ * Creates a lobby for people to join, uses 4 random capital letters as the room code.
+ */
 function createLobby() {
   const generateCode = length => {
     return Array(length).fill('x').join('').replace(/x/g, () => {
@@ -9,6 +12,9 @@ function createLobby() {
 
   localStorage.setItem("lobbyCode", lobbyCode);
 
+  /**
+   * Creates the lobby in firestore
+   */
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       var currentUser = db.collection("users").doc(user.uid)
@@ -43,6 +49,9 @@ function createLobby() {
   });
 }
 
+/**
+ * Redirect to the join lobby page.
+ */
 function join() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {

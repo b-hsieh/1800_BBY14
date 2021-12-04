@@ -1,3 +1,6 @@
+/**
+ * Joins the lobby that belongs to the code the user entered
+ */
 function joinLobby() {
   let lobbyCode = document.getElementById("lobbyCode").value;
   localStorage.setItem("lobbyCode", lobbyCode);
